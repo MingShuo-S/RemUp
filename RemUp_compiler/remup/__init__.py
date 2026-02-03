@@ -8,9 +8,9 @@ from .lexer import Lexer
 # 从ast_nodes中导入主要的类和函数
 from .ast_nodes import (
     Document, Archive, MainCard, Region, Label, 
-    VibeCard, Inline_Explanation, Rem_List, Code_Block, VibeArchive
+    VibeCard, Inline_Explanation, Code_Block, VibeArchive
 )
-
+ 
 __version__ = "1.0.0"
 __author__ = "MingShuo_S"
 __email__ = "2954809209@qq.com"

@@ -436,7 +436,7 @@ body {
     animation: fadeIn 0.15s ease;
     pointer-events: none;
     bottom: calc(100% + 6px);
-    left: 50%;
+    left: 150%;
     transform: translateX(-50%);
 }
 
@@ -460,18 +460,26 @@ body {
     z-index: 10002;
 }
 
+/* 弹出层内容 */
+.popup-content {
+    overflow-y: auto;
+    max-height: 200px;
+}
+
+/* 返回链接样式 */
 .back-to-source {
     display: block;
-    margin-top: 4px;
-    font-size: 0.7em;
-    color: var(--remup-primary);
-    text-decoration: none;
+    margin-top: 8px;
+    padding-top: 6px;
+    border-top: 1px solid #f0f0f0;
+    font-size: 0.75em;
+    color: #3498db;
+    text-align: center;
 }
 
 .back-to-source:hover {
     text-decoration: underline;
 }
-
 /* ============================================
     归档卡片样式 - 完整功能
     ============================================ */

@@ -1,0 +1,225 @@
+--<用前提示>--
+<+tips
+---实时预览
+如果使用`remup live test.remup`这样的实时预览功能，修改之后记得手动刷新网页 >>有个不用刷新网页的，但是目前效果不太好，没有集成进来。
+---一些限制
+- 主卡内的文字必须有所属**区域主题**，否则会被省略
+- **标签**必须放在**第一个区域**之前
+- **行内解释**必须放在相应行的**最后**
+>>这些目前主要是编译器限制，后续可能会慢慢修改
+/+>
+
+--<RemUp功能展示>--
+<+欢迎使用RemUp
+(i: 互动教程)
+(!: #重要提示>>点击标签可跳转)
+(>: 学习指南)
+---欢迎词
+**RemUp**是一个专为**学习记忆**设计的轻量级标记语言。这个文件将逐步引导您了解RemUp的所有核心功能。 >>建议您先编译此文件，然后在浏览器中实时查看效果
+![RemUp Logo](static\Logo.svg)
+---如何开始
+1. **环境安装**：按照README.md完成Python环境配置
+2. **首次编译**：将本文件拖拽到`compile_remup.py`上，或使用命令：`remup 本文件名.remup`
+3. **实时预览**：进阶用户可使用`remup live 本文件名.remup`启动实时监控
+
+---基础语法结构
+RemUp采用**分层结构**组织内容：
+- **归档(Archive)**：`--<归档名>--` - 内容的大类分组
+- **主卡(Card)**：`<+主题` 到 `/+>` - 知识的核心单元
+- **区域(Region)**：`---区域名` - 卡片内的内容分区
+- **标签(Label)**：`(符号: 内容)` - 右上角的标识和导航
+
+/+>
+
+<+文本格式化功能
+(i: 基础语法)
+(!: #必看)
+---文字样式效果
+**加粗文本** - 用于强调重点内容
+*斜体文本* - 用于引用或次要说明
+***加粗且斜体*** - 用于特别重要的内容
+==高亮显示== - 用于关键信息标记
+~~删除线文本~~ - 用于过时内容
+
+---字体大小控制
++放大1.2倍+ - 用于小标题或重点语句
+++放大1.5倍++ - 用于主要标题或特别强调
+
+---行内解释功能
+这是普通文本>>这是灰色解释文字 - 用于补充说明
+每个语法元素都可以添加解释 >>帮助理解功能用途
+
+---代码和特殊格式
+行内代码：`print("Hello RemUp")` - 用于代码片段或术语
+`注卡批注`[将鼠标悬停在灰色文字上查看详细说明] - 核心交互功能
+
+/+>
+
+<+标签系统详解
+(i: 导航功能)
+(!: #交互演示)
+(?: 这是什么？)
+---标签类型说明
+RemUp提供多种标签类型：
+- **重要提示** `(!: 内容)` - 红色，用于关键信息
+- **学习指南** `(>: 内容)` - 蓝色，用于指导性内容  
+- **问题提示** `(?: 内容)` - 绿色，用于疑问或思考
+- **信息补充** `(i: 内容)` - 灰色，用于辅助信息
+
+---标签跳转功能
+**标签间跳转**：点击标签中的`#目标`即可跳转到对应卡片 >>尝试点击右上角的"#必看"标签
+
+---自定义跳转
+`(!: #文本格式化功能 >>点击跳转到文本格式化卡片)`
+`(>: #欢迎使用RemUp >>点击返回欢迎卡片)
+`标签跳转`[实现知识点之间的快速导航，构建知识网络]是RemUp的核心优势之一
+
+/+>
+
+<+注卡交互系统
+(i: 高级功能)
+(!: #悬停演示)
+---什么是注卡？
+注卡是RemUp的**核心交互功能**，格式为：` `内容`[批注] `
+将鼠标悬停在`蓝色背景的文字`[这里会显示详细的批注说明]上查看效果
+
+---注卡使用场景
+1. **术语解释**：`Python`[一种流行的编程语言，以简洁易读著称]
+2. **概念补充**：`机器学习`[让计算机从数据中学习模式而不直接编程]
+3. **示例说明**：`编译`[将源代码转换为可执行文件的过程]
+
+---双向跳转功能
+每个注卡都支持**双向跳转**：
+- 从原文跳转到注卡归档
+- 从注卡归档跳回原文位置
+`悬停效果`[注卡采用智能定位系统，自动避开屏幕边缘]经过精心优化
+
+/+>
+
+<+列表与组织结构
+(i: 内容编排)
+---无序列表
+- 第一级项目
+- 回到第一级
+
+---有序列表
+1. 第一步操作
+2. 第二步操作
+3. 第三步操作
+
+/+>
+
+<+实战编写指南
+(i: 实用技巧)
+(!: #最佳实践)
+---文件创建流程
+1. 新建文本文件，写入RemUp语法内容
+2. 将文件后缀改为`.remup`
+3. 使用编译器生成HTML文件
+4. 在浏览器中查看效果
+
+---推荐编写工具
+- **VSCode**：提供语法高亮和代码提示
+- **记事本++**：轻量级文本编辑器
+- **在线编辑器**：支持实时预览的Web工具
+
+---内容组织建议
+**归档设计**：按知识领域或学习阶段划分
+**卡片规划**：每个核心概念单独成卡
+**区域安排**：逻辑清晰的内容分组 >>避免单个区域内容过长
+
+`内容组织`[良好的结构是有效学习的基础]至关重要
+
+/+>
+
+<+进阶功能预览
+(i: 未来规划)
+---开发中的功能
+- [ ] **表格支持**：用于数据对比和整理
+- [ ] **分层列表**：更复杂的知识结构表达
+- [ ] **模板系统**：快速创建标准格式卡片
+- [ ] **导出功能**：支持PDF、Anki等多种格式
+
+---社区贡献
+欢迎到[GitHub仓库](https://github.com/MingShuo-S/PPL_Project-RemUp)参与项目开发 >>提交问题反馈或功能建议
+
+`社区参与`[开源项目的发展离不开用户的反馈和贡献]是项目进步的动力
+
+/+>
+
+<+重要提示>>点击标签可跳转
+(s: 欢迎使用RemUp)
+---归档系统提示
+   下面的内容就是归档系统，您可以直接点击对应的按钮jump到对应的归档内容。
+
+/+>
+
+--<部分功能卡片展示>--
+
+--<Q&A>--
+<+What is RemUp?
+    (i: #essential)
+    ---第一组问题
+    ++Q: **what is RemUp?**++
+    +A: ==RemUp== is a **programming language** and a compiler that can be used to create websites and web applications. It is a high-level language that is easy to learn and use, and it is designed to be easy to read and understand. RemUp is a powerful tool for creating websites and web applications quickly and easily.+
+
+    ++Q: **what is the purpose of RemUp?**++
+    +A: The purpose of RemUp is to make it easier for developers to create websites and web applications. RemUp provides a simple and easy-to-use language that is easy to learn and use. It is designed to be easy to read and understand, which makes it a powerful tool for creating websites and web applications quickly and easily.+
+    ---第二组问题
+    ++Q: **what are the advantages of using RemUp?**++
+    +A: The advantages of using RemUp are that it is easy to learn and use, it is designed to be easy to read and understand, and it is a powerful tool for creating websites and web applications quickly and easily.+
+
+    ++Q: **what are the disadvantages of using RemUp?**++
+    +A: The disadvantages of using RemUp are that it can be a bit complex to learn and use, and it can be a bit difficult to read and understand. It can be a bit time-consuming to create websites and web applications using RemUp.+
+    /+>
+
+--<学术研究>--
+<+Systematic Literature Review
+(i: 研究方法)
+---定义
+SLR: Systematic Literature Review 系统文献综述
+---相关术语
+- PSs: Primary Studies 原始研究
+- RQs: Research Questions 研究问题  >>zhihu: 研究问题是指对某一问题的研究，是对某一主题的研究，是对某一问题的研究。
+---特点
+系统性、全面性的文献回顾方法
+/+>
+
+<+PRISMA
+(i: 报告规范)
+---定义
+PRISMA: Preferred Reporting Items for Systematic Reviews and Meta-Analysis
+学术研究中系统综述的重要国际报告规范
+---组成部分
+- 27个条目的检查清单（PRISMA Checklist）
+- 文献筛选流程图（PRISMA Flow Diagram）
+---用途
+确保论文包含所有必要信息，如研究背景、方法、结果等
+/+>
+
+--<写作提升>--
+<+vigilant
+(>: #careful, #watchful, 近义词)
+(!: 重点词汇)
+---解释
+adj. 警惕的；警觉的；戒备的
+---词组
+- be vigilant about/against/over >>对…保持警惕
+- remain/stay vigilant >>保持警惕
+---例句
+- Citizens are urged to remain vigilant against `网络诈骗`[指通过互联网进行的欺诈行为]。 >>敦促公民对网络诈骗保持警惕
+/+>
+
+<+leverage
+(>: #utilize, #exploit, 近义词)
+(!: 高频词汇)
+---解释
+v. 利用；使发挥最大作用
+n. 影响力；杠杆作用
+---特点
+比use和utilize更主动、更高效，常用于商业和学术语境
+---例句
+- Companies need to leverage their resources effectively. >>公司需要有效利用资源。
+/+>
+
+

@@ -1,14 +1,10 @@
 
 ---
-<!-- 语言切换器 -->
-<div align="right">
-  <small>
-    🌐 <strong>Language: </strong> 
-    <a href="README.md">中文</a> • 
-    <a href="README_eng.md">English</a>
-  </small>
-</div>
 <div align="center">
+<a href="https://github.com/MingShuo-S/PPL_Project-RemUp">
+    <img src="static/Logo.svg" alt="RemUp Logo" width="500" height="120" style="border-radius: 8px;  object-fit: cover;object-position: center; 
+border: 0px solid #ddd;">
+  </a>
 
 
 # RemUp - 记忆辅助标记语言
@@ -18,10 +14,9 @@
 ![GitHub Actions](https://img.shields.io/badge/Python-3.8+-blue)
 ![GitHub Actions](https://img.shields.io/badge/License-MIT-green)
 
-#项目介绍 • #快速开始 • #语法指南 • #使用示例 • #贡献指南
-
 </div>
 
+***建议先看完[项目报告](Project_Report.md)再看本文件***
 ## 📖 项目介绍
 
 RemUp 是一个创新的轻量级标记语言和编译器，专为构建"学习-理解-再学习"的记忆闭环而设计。它可以将结构化的知识转换为具有丰富交互功能的HTML学习卡片，支持主卡系统、注卡批注和智能归档，帮助用户高效构建个人知识体系。
@@ -31,9 +26,11 @@ RemUp 是一个创新的轻量级标记语言和编译器，专为构建"学习-
 - **🎴 主卡系统** - 结构化知识承载，使用简洁的标记语法
 - **💡 注卡系统** - 交互式批注，悬停显示，双向跳转
 - **📚 归档系统** - 智能知识组织，自动生成导航
-- **🎨 响应式设计** - 多设备完美适配，支持打印输出
+- **🎨 多主题支持** - 内置多种CSS主题，支持一键切换
 - **🔗 智能链接** - 标签间快速跳转，构建知识网络
-- **🖱️ 拖拽编译** - 支持文件拖拽，一键编译体验
+- **🌙 主题切换** - 支持默认、紧凑和夜间模式
+- **🔥 实时预览** - 开发中的实时编译和预览功能
+- **📦 静态资源管理** - 自动复制CSS文件，支持离线使用
 
 ## 🚀 快速开始
 
@@ -42,86 +39,128 @@ RemUp 是一个创新的轻量级标记语言和编译器，专为构建"学习-
 - Python 3.8 或更高版本
 - 现代浏览器（Chrome、Firefox、Safari等）
 
-### 安装步骤
+### 体验流程
 
-1. **克隆仓库**
-```bash
-git clone https://github.com/MingShuo-S/PPL_Project-RemUp.git
-cd PPL_Project-RemUp
-```
+1. **下载项目**
+   从GitHub仓库下载压缩包并解压，或使用git克隆（或直接下载安装包）：
+   ```bash
+   git clone https://github.com/MingShuo-S/PPL_Project-RemUp.git
+   cd PPL_Project-RemUp
+   ```
 
-2. **进入编译器目录**
-```bash
-cd RemUp_Compiler
-```
+2. **设置虚拟环境（推荐）**
+   ```bash
+   python -m venv venv
+   # 激活环境
+   source venv/bin/activate  # Linux/macOS
+   venv\Scripts\activate    # Windows
+   ```
 
-3. **创建虚拟环境（推荐）**
-```bash
-python -m venv venv
-# 激活环境
-source venv/bin/activate  # Linux/macOS
-venv\Scripts\activate    # Windows
-```
+3. **安装依赖与模块**
+   ```bash
+   pip install -r requirements.txt
+   pip install -e . # 开发者模式
+   ```
 
-4. **安装依赖**
-```bash
-pip install -e .
-```
+4. **查看可用主题**
+   ```bash
+   remup --list-themes
+   ```
 
-5. **验证安装**
-```bash
-remup --help
-```
+5. **编译第一个文件**
+   ```bash
+   # 编译单个文件
+   remup test.remup
+   
+   # 或者启动实时预览
+   remup live test.remup
+   ```
+   **最便捷**：你也可以直接拖入remup_compile.py文件进行编译：
+   ![演示gif](static/gifs/toss_compile.gif)
+
+6. **查看结果**
+   - 将生成的HTML文件拖入浏览器中欣赏成果
+   - 在浏览器页面右上角测试主题切换功能
 
 ## 💡 使用方式
 
 ### 1. 命令行编译（推荐）
 
-使用`remup`命令进行编译：
+RemUp v3.1 引入了子命令系统，提供更清晰的命令行接口。
 
+#### 基础编译命令
 ```bash
 # 编译单个文件
-remup examples/vocabulary.remup
+remup build input.remup
 
 # 编译整个目录
-remup examples/ -d
+remup build ./notes -d
 
-# 指定输出文件
-remup examples/vocabulary.remup -o my_notes.html
+# 递归编译子目录
+remup build ./notes -d -r
 
-# 使用自定义CSS样式
-remup examples/vocabulary.remup -c custom_style.css
+# 指定输出路径和主题
+remup build input.remup -o output.html -t DarkTheme
+
+# 自定义页面标题
+remup build input.remup --title "我的学习笔记"
 ```
 
-### 2. 拖拽编译（便捷方式）
+#### 实时预览命令
+```bash
+# 启动实时预览服务器
+remup live input.remup
 
-将`.remup`文件拖拽到`compile_remup.py`脚本上即可自动编译：
+# 指定端口和主机
+remup live input.remup -p 8080 --host 0.0.0.0
 
-1. 定位到`compile_remup.py`文件
-2. 将任意`.remup`文件拖拽到该脚本上
-3. 脚本自动完成编译，输出文件在同目录生成
+# 不自动打开浏览器
+remup live input.remup --no-browser
 
-**特性：**
-- ✅ 自动检测文件类型
-- ✅ 输出文件与源文件同目录
-- ✅ 批量文件支持
-- ✅ 详细编译日志
+# 使用特定主题
+remup live input.remup -t CompactStyle
+```
 
-### 3. Python API 调用
+#### 信息查询命令
+```bash
+# 列出所有可用主题
+remup --list-themes
 
-```python
-from remup.compiler import compile_remup
+# 显示版本信息
+remup --version
+```
 
-# 基本编译
-result_path = compile_remup("my_notes.remup")
-print(f"编译完成: {result_path}")
+### 2. 主题系统
 
-# 高级选项
-result_path = compile_remup(
-    "my_notes.remup", 
-    "output.html",
-    css_file="custom_style.css"
-)
+RemUp 支持多主题系统，编译时会自动将CSS文件复制到输出目录的 `static/css/` 子目录。
+
+#### 可用主题
+- **RemStyle** - 默认主题，平衡的可读性和美观性
+- **CompactStyle** - 紧凑主题，适合内容密集的笔记
+- **DarkTheme** - 暗色主题，减少眼部疲劳
+
+#### 主题切换
+在生成的HTML页面中，可以通过页面顶部的主题选择器实时切换主题，选择会自动保存到本地存储。
+
+### 3. 静态资源管理
+
+编译器会自动处理静态CSS文件：
+- ✅ 自动检测项目根目录的 `static/css/` 文件夹
+- ✅ 编译时复制所有CSS主题文件到输出目录
+- ✅ 保持主题文件的完整性和版本一致性
+- ✅ 支持离线使用，所有资源本地化
+
+### 4. 高级选项
+
+```bash
+# 禁用静态资源复制（高级用户）
+remup build input.remup --no-static
+
+# 批量编译目录
+remup build ./my_notes -d -r -t DarkTheme
+
+# 生产环境编译
+remup build input.remup -o dist/production.html --title "正式文档"
 ```
 
 ## 📝 语法指南
@@ -130,87 +169,76 @@ result_path = compile_remup(
 
 | 语法元素 | 格式 | 示例 | 说明 |
 |---------|------|------|------|
-| **主卡开始** | `<+主题` | `<+python_functions` | 定义新卡片 |
+| **主卡开始** | `<+主题` | `<+RemUp` | 定义新卡片 |
 | **主卡结束** | `/+>` | `/+>` | 结束当前卡片 |
 | **标签** | `(符号: 内容)` | `(!: 重要)` | 右上角标签 |
-| **链接标签** | `(符号: #目标)` | `(>: #function)` | 可跳转标签 |
-| **区域划分** | `---区域名` | `---示例` | 内容分区 |
-| **行内解释** | `>>解释` | `Python>>编程语言` | 灰色解释文字 |
+| **链接标签** | `(符号: #目标)` | `(!: #必看)` | 可跳转标签 |
+| **区域划分** | `---区域名` | `---语法` | 内容分区 |
+| **行内解释** | `>>解释` | `>>编程基础` | 灰色解释文字 |
 | **注卡批注** | `` `内容`[批注] `` | `` `变量`[存储数据] `` | 交互式批注 |
-| **归档标记** | `--<主题>--` | `--<编程基础>--` | 卡片分组 |
+| **文本加粗** | `**文本**` | `**重要内容**` | 加粗显示 |
+| **文本斜体** | `*文本*` | `*强调内容*` | 斜体显示 |
+| **文本高亮** | `==文本==` | `==关键点==` | 高亮显示 |
+| **文本放大** | `+文本+` | `+重点+` | 放大1.2倍 |
+| **文本更大** | `++文本++` | `++标题++` | 放大1.5倍 |
 
 ### 完整示例
 
 ```remup
---<编程学习>--
-<+python_functions
-(>: #variable, #class)
-(!: 基础概念)
+--<欢迎入门>--
+<+RemUp
+(i: 基础介绍)
+(!: #必看)
 
----定义
-`函数`[完成特定功能的可重用代码块] >>编程基础
-是组织代码的基本单元，提高代码的复用性和可读性。
+---RemUp是什么
+**RemUp**是一个用于**辅助学习记忆**的**专注于电脑笔记**领域的**轻量级标记语言**。你可以简单地认为这是一个专业化的MarkDown，这与MarkDown的原理是差不多的，就是专业化更高，并且相应的支持还在构建中。
 
----语法
-      ```python
-      def greet(name: str) -> str:
-         return f"Hello, {name}!"
-      ```
+---如何入门
+1. 首先，你需要按照本教程把RemUp的环境搭建好，然后将这个文件编译成html文件。
+2. 使用以下命令编译：`remup build example.remup -t DarkTheme`
 
----示例
-- 定义函数时使用 `def` 关键字
-- 函数名应具有描述性，使用小写字母和下划线
-- 包含类型注解提高代码可读性
-- 使用文档字符串说明函数功能
+---新特性
+RemUp v3.1 引入了以下新功能：
+- **多主题支持**：使用 `-t` 参数切换主题
+- **实时预览**：使用 `remup live` 命令启动实时预览
+- **静态资源管理**：自动处理CSS文件
+- **改进的命令行接口**：子命令系统更加直观
 
----最佳实践
-1. 保持函数功能单一（单一职责原则）
-2. 限制函数参数数量（通常不超过3个）
-3. 使用有意义的函数和参数名
-4. 为复杂函数编写文档字符串
+>>更多功能正在开发中...
 /+>
 ```
 
 ## 📁 项目结构
 
 ```
-RemUp_Compiler/
-├── remup/                 # 编译器核心包
-│   ├── __init__.py
-│   ├── main.py           # 命令行入口点
-│   ├── cli.py            # 🔥 新增：CLI接口
-│   ├── compiler.py       # 编译器协调器
-│   ├── lexer.py          # 词法分析器
-│   ├── parser.py         # 语法解析器
-│   ├── ast_nodes.py      # AST节点定义
-│   └── html_generator.py # HTML生成器
-├── compile_remup.py      # 🔥 新增：拖拽编译脚本
-├── examples/             # 示例文件
-│   ├── vocabulary.remup
-│   ├── programming.remup
-│   └── concepts.remup
-├── tests/                # 测试用例
-├── setup.py              # 包配置
-├── requirements.txt      # 依赖列表
-└── README.md            # 项目说明
+PPL_Project-RemUp/                 # 项目根目录
+├── remup/                         # 编译器核心包
+│   ├── __init__.py                # 初始化文件
+│   ├── ast_nodes.py               # 抽象语法树定义
+│   ├── lexer.py                   # 词法解析器
+│   ├── parser.py                  # 语法解析器
+│   ├── html_generator.py          # HTML生成器
+│   ├── compiler.py                # 编译器核心
+│   ├── live_preview.py            # 实时预览功能
+│   └── main.py                    # 命令行主入口
+├── static/                        # 静态资源
+│   ├── Logo.svg                   # RemUp的Logo
+│   └── css/                       # 主题文件目录
+│       ├── RemStyle.css           # 默认样式文件
+│       ├── CompactStyle.css       # 紧凑样式文件
+│       └── DarkTheme.css          # 暗色主题文件
+├── examples/                      # 示例文件目录
+│   ├── test.remup                 # 测试文件
+│   └── vocabulary.remup           # 词汇表示例
+├── requirements.txt               # Python依赖配置
+├── setup.py                       # 包安装配置
+├── README.md                      # 项目说明文档
+└── LICENSE                    # 许可证文件（作业中不可见）
 ```
 
 ## 🛠️ 开发指南
 
-### 运行测试
-
-```bash
-# 进入编译器目录
-cd RemUp_Compiler
-
-# 运行测试套件
-python -m pytest tests/
-
-# 运行特定测试
-python -m pytest tests/test_compiler.py
-```
-
-### 项目架构
+### 架构概述
 
 RemUp编译器采用标准的编译器架构：
 
@@ -226,10 +254,11 @@ RemUp编译器采用标准的编译器架构：
 - **新的语法元素** - 在lexer和parser中添加支持
 - **输出格式** - 实现新的生成器（如PDF、Anki等）
 - **主题系统** - 创建可切换的CSS主题
+- **实时预览** - 完善live_preview功能
 
 ## 🤝 贡献指南
 
-我们欢迎各种形式的贡献！
+我们欢迎各种形式的贡献！在贡献时，请遵循技术文档写作的黄金法则：清晰、准确、简洁。
 
 ### 贡献方式
 
@@ -239,33 +268,33 @@ RemUp编译器采用标准的编译器架构：
 4. **推送到分支** (`git push origin feature/AmazingFeature`)
 5. **开启 Pull Request**
 
-### 开发重点
+### 文档标准
 
-- 语法解析器的完善和优化
-- 注卡交互功能的增强
-- 模板系统的设计与实现
-- 导出格式的扩展（PDF、Anki等）
-- 性能优化和错误处理
+在提交文档更改时，请确保：
+- 使用清晰的标题层级结构
+- 保持段落简洁（最佳长度小于等于四行）
+- 使用主动语态和肯定句
+- 为代码示例提供适当的注释和说明
 
 ## ❓ 常见问题
 
-### Q: 拖拽编译不工作怎么办？
-A: 确保：
-1. 已安装Python并配置环境变量
-2. 已运行 `pip install -e .` 安装依赖
-3. 文件扩展名为 `.remup`
+### Q: 如何查看可用的主题列表？
+A: 使用 `remup --list-themes` 命令查看所有可用主题。
 
-### Q: 如何自定义输出样式？
-A: 创建自定义CSS文件，使用 `-c` 参数指定：
-```bash
-remup my_notes.remup -c custom_style.css
-```
+### Q: 编译时出现主题不存在的错误怎么办？
+A: 确保项目根目录下的 `static/css/` 目录中存在对应的CSS文件。可以使用默认主题 `RemStyle` 进行测试。
 
-### Q: 注卡功能不显示怎么办？
-A: 检查注卡语法格式：`` `内容`[批注] ``，确保使用反引号包裹内容，方括号包裹批注。
+### Q: 实时预览功能如何工作？
+A: 使用 `remup live input.remup` 启动实时预览服务器，该命令会监控文件变化并自动重新编译，但是目前预览需要手动刷新浏览器。
 
-### Q: 标签跳转失效？
-A: 确保跳转目标存在，标签格式为 `(>: #target_id)`，且 `target_id` 与实际卡片主题一致。
+### Q: 如何自定义主题？
+A: 在 `static/css/` 目录下创建新的CSS文件，然后在编译时使用 `-t` 参数指定主题名。
+
+### Q: 静态资源复制失败怎么办？
+A: 检查项目根目录结构，确保存在 `static/css/` 目录。可以使用 `--no-static` 参数暂时禁用静态资源复制。
+
+### Q: 如何为现有项目添加RemUp支持？
+A: 在项目根目录创建 `static/css/` 目录并添加主题文件，然后使用RemUp编译器处理你的文档文件。
 
 ## 📄 许可证
 
@@ -274,17 +303,15 @@ A: 确保跳转目标存在，标签格式为 `(>: #target_id)`，且 `target_id
 ## 📞 联系方式
 
 - **作者**: MingShuo-S
-- **邮箱**: 2954809209@qq.com
 - **项目链接**: https://github.com/MingShuo-S/PPL_Project-RemUp
 - **问题反馈**: 欢迎通过GitHub Issues提交问题和建议
 
 ## 🙏 致谢
 
 感谢所有为这个项目做出贡献的开发者！特别感谢：
-
+- 开源社区提供的宝贵工具和库
 - 所有测试人员和bug报告者
 - 提供宝贵反馈的用户
-- 开源社区的启发和支持
 
 ---
 
@@ -295,3 +322,15 @@ A: 确保跳转目标存在，标签格式为 `(>: #target_id)`，且 `target_id
 **开始你的记忆升级之旅吧！** 🚀
 
 </div>
+
+## 🔄 更新日志
+
+### v3.1 (2026-01-25)
+- **新增**: 多主题系统支持
+- **新增**: 静态资源自动管理
+- **新增**: 子命令命令行接口
+- **优化**: 改进的错误处理和用户反馈
+- **增强**: 实时预览功能稳定性
+
+
+*持续更新中...*

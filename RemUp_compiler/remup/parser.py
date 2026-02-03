@@ -1,5 +1,4 @@
 import re
-import html
 from typing import List, Tuple, Optional, Dict, Any
 from remup.ast_nodes import (
     Document, Archive, MainCard, Region, Label, 
@@ -310,7 +309,7 @@ class Parser:
         # 收集代码内容直到代码块结束
         while self.current_token and self.current_token[0] != 'CODE_BLOCK_END':
             if self.current_token[0] == 'CODE_BLOCK_CONTENT':
-                code_lines.append(html.escape(self.current_token[1]))
+                code_lines.append(self.current_token[1])
             self.advance()
         
         # 消费代码块结束标记

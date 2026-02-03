@@ -1,24 +1,24 @@
 /* ============================================
-RemUp 暗色主题 v3.4 - DarkTheme
+RemUp 样式系统 v4.0 - 暗色主题优化版
 ============================================ */
 
-/* 暗色主题变量定义 */
+/* 基础变量定义 - 暗色主题 */
 :root {
-    /* 主色调 - 保持原有色调但调整亮度 */
-    --remup-primary: #5dade2;
-    --remup-secondary: #58d68d;
-    --remup-accent: #ec7063;
-    --remup-gray: #85929e;
-    --remup-light-gray: #2c3e50;
+    /* 主色调 - 调整为暗色友好色调 */
+    --remup-primary: #64b5f6;
+    --remup-secondary: #81c784;
+    --remup-accent: #ff8a65;
+    --remup-gray: #78909c;
+    --remup-light-gray: #37474f;
     
     /* 卡片颜色 - 深色背景 */
-    --card-bg: #2c3e50;
+    --card-bg: #1e1e1e;
     --card-shadow: rgba(0, 0, 0, 0.3);
-    --card-border: #34495e;
+    --card-border: #424242;
     
     /* 区域线颜色 */
-    --region-line: #5d6d7e;
-    --region-title: #85929e;
+    --region-line: #546e7a;
+    --region-title: #90a4ae;
     
     /* 字体 */
     --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Microsoft YaHei', sans-serif;
@@ -30,15 +30,25 @@ RemUp 暗色主题 v3.4 - DarkTheme
     --font-size-small: 0.85em;
     --line-height-comfort: 1.5;
     --spacing-compact: 0.8rem;
+    
+    /* 新增注卡变量 */
+    --popup-top: 0;
+    --popup-left: 0;
 }
 
-/* 基础样式 - 暗色背景 */
+/* 重置和基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: var(--font-main);
     font-size: var(--font-size-base);
     line-height: var(--line-height-comfort);
-    color: #ecf0f1; /* 浅色文字 */
-    background: linear-gradient(135deg, #1a2530 0%, #2c3e50 100%); /* 深色渐变背景 */
+    color: #e0e0e0; /* 浅色文字 */
+    background: linear-gradient(135deg, #121212 0%, #2d2d2d 100%); /* 深色渐变背景 */
     padding: 15px;
     min-height: 100vh;
 }
@@ -50,15 +60,14 @@ body {
     padding: 15px;
 }
 
-/* 页面标题样式 - 暗色适配 */
+/* 页面标题样式 */
 .page-header {
     text-align: center;
     margin-bottom: 30px;
     padding: 20px;
-    background: #34495e; /* 深灰色背景 */
+    background: #2d2d2d; /* 深灰色背景 */
     border-radius: 12px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    color: #ecf0f1;
 }
 
 .page-header h1 {
@@ -67,28 +76,65 @@ body {
     font-size: 2em;
 }
 
+/* 主题选择器样式 */
+.theme-selector-container {
+    text-align: right;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.theme-selector-container label {
+    margin-right: 10px;
+    font-weight: 500;
+    color: var(--remup-gray);
+}
+
+#themeSelector {
+    padding: 5px 10px;
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    background: #2d2d2d; /* 深色背景 */
+    color: #e0e0e0; /* 浅色文字 */
+}
+
+/* 字体放大样式 */
+.size-1-2 {
+    font-size: 1.2em;
+    display: inline-block;
+    line-height: 1.3;
+}
+
+.size-1-5 {
+    font-size: 1.5em;
+    display: inline-block;
+    line-height: 1.3;
+    font-weight: 500;
+}
+
+.size-1-2, .size-1-5 {
+    transition: font-size 0.2s ease;
+}
+
 /* ============================================
-    主卡样式 - 暗色适配
-    ============================================ */
+    主卡样式
+============================================ */
 .card {
     background: var(--card-bg);
     border-radius: 10px;
     box-shadow: 0 3px 15px var(--card-shadow);
     border: 1px solid var(--card-border);
     padding: 20px;
-    margin-bottom: 0;
+    margin-bottom: 25px;
     position: relative;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     width: 100%;
     min-width: 0;
     font-size: var(--font-size-base);
-    color: #ecf0f1; /* 浅色文字 */
 }
 
 .card:hover {
     transform: translateY(-1px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    border-color: var(--remup-primary);
 }
 
 .card h2 {
@@ -106,9 +152,37 @@ body {
     align-items: center;
 }
 
+.card h2::before {
+    content: '<+';
+    color: var(--remup-gray);
+    font-family: var(--font-mono);
+    font-size: 0.7em;
+    margin-right: 6px;
+    opacity: 0.7;
+    flex-shrink: 0;
+}
+
+.card h2::after {
+    content: '/+>';
+    color: var(--remup-gray);
+    font-family: var(--font-mono);
+    font-size: 0.7em;
+    margin-left: 6px;
+    opacity: 0.7;
+    flex-shrink: 0;
+}
+
+.card-title-text {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 /* ============================================
-    标签系统 - 暗色适配
-    ============================================ */
+    标签系统
+============================================ */
 .labels-container {
     display: flex;
     flex-wrap: wrap;
@@ -116,24 +190,28 @@ body {
     justify-content: flex-start;
     margin-bottom: 15px;
     padding: 8px 0;
-    border-bottom: 1px solid #404e5c; /* 深色边框 */
+    border-bottom: 1px solid #424242; /* 深色分隔线 */
     min-height: 32px;
     align-items: center;
+}
+
+.labels-container:empty {
+    display: none;
 }
 
 .label {
     display: inline-flex;
     align-items: center;
-    background: #34495e; /* 深色背景 */
+    background: #2d2d2d; /* 深色背景 */
     border-radius: 16px;
     padding: 6px 12px;
     text-decoration: none;
-    color: #ecf0f1; /* 浅色文字 */
+    color: #b0b0b0; /* 中等亮度文字 */
     font-size: 0.85em;
     transition: all 0.3s ease;
     max-width: 200px;
     overflow: hidden;
-    border: 1px solid #4a5f7a; /* 深色边框 */
+    border: 1px solid #424242; /* 深色边框 */
     position: relative;
     flex-shrink: 0;
     white-space: nowrap;
@@ -141,22 +219,30 @@ body {
 }
 
 .label:hover {
-    background: #405772;
+    background: #424242; /* 稍亮的深色 */
     transform: translateY(-1px);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     z-index: 3;
 }
 
-/* 可跳转标签的特殊样式 */
 .label[href]:not(.label[href=""]) {
     border: 1.5px solid var(--remup-primary);
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    background: linear-gradient(135deg, #2d2d2d 0%, #37474f 100%); /* 深色渐变 */
     cursor: pointer;
 }
 
 .label[href]:not(.label[href=""]):hover {
-    background: linear-gradient(135deg, #34495e 0%, #3d566e 100%);
-    box-shadow: 0 3px 8px rgba(93, 173, 226, 0.3);
+    background: linear-gradient(135deg, #37474f 0%, #455a64 100%);
+    box-shadow: 0 3px 8px rgba(100, 181, 246, 0.3); /* 主色调阴影 */
+}
+
+.label[href]:not(.label[href=""])::after {
+    content: '↗';
+    margin-left: 4px;
+    font-size: 0.9em;
+    color: var(--remup-primary);
+    opacity: 0.8;
+    flex-shrink: 0;
 }
 
 .label-symbol {
@@ -180,10 +266,9 @@ body {
     text-overflow: ellipsis;
     flex: 1;
     min-width: 0;
-    color: #ecf0f1;
 }
 
-/* 标签类型颜色映射 - 暗色适配 */
+/* 标签类型颜色映射 */
 .label.default .label-symbol {
     border-color: var(--remup-primary);
     color: var(--remup-primary);
@@ -193,33 +278,31 @@ body {
     color: var(--remup-accent);
 }
 .label.reference .label-symbol {
-    border-color: #5dade2;
-    color: #5dade2;
+    border-color: #64b5f6;
+    color: #64b5f6;
 }
 .label.question .label-symbol {
-    border-color: #f39c12;
-    color: #f39c12;
+    border-color: #ffb74d;
+    color: #ffb74d;
 }
 .label.info .label-symbol {
     border-color: var(--remup-gray);
     color: var(--remup-gray);
 }
 
-/* 标签链接样式 */
 .label-link {
-    color: #5dade2; /* 亮蓝色链接 */
+    color: inherit;
     text-decoration: none;
     margin-right: 3px;
 }
 
 .label-link:hover {
-    color: #7fb3d5;
     text-decoration: underline;
 }
 
 /* ============================================
-    区域系统 - 暗色适配
-    ============================================ */
+    区域系统
+============================================ */
 .region {
     margin: 20px 0;
     position: relative;
@@ -254,12 +337,11 @@ body {
 .region-content {
     margin-top: 12px;
     position: relative;
-    color: #ecf0f1;
 }
 
 /* ============================================
-    列表样式 - 暗色适配
-    ============================================ */
+    列表样式
+============================================ */
 .region-content ul,
 .region-content ol {
     margin: 0;
@@ -272,7 +354,6 @@ body {
     padding-left: 1.2em;
     margin-bottom: 0.4em;
     font-size: 0.95em;
-    color: #ecf0f1;
 }
 
 .region-content ul li::before {
@@ -301,27 +382,25 @@ body {
 }
 
 /* ============================================
-    内容样式 - 暗色适配
-    ============================================ */
+    内容样式
+============================================ */
 .content {
     line-height: var(--line-height-comfort);
     font-size: var(--font-size-base);
     position: relative;
-    color: #ecf0f1;
 }
 
 .content p {
     margin-bottom: 12px;
     font-size: 0.95em;
-    color: #ecf0f1;
 }
 
 /* ============================================
-    代码块样式 - 暗色适配
-    ============================================ */
+    代码块样式
+============================================ */
 .code-block {
-    background: #1a252f;
-    color: #e2e8f0;
+    background: #1a1a1a; /* 更深的背景 */
+    color: #e0e0e0; /* 浅色文字 */
     padding: 15px;
     border-radius: 6px;
     margin: 15px 0;
@@ -331,7 +410,7 @@ body {
     line-height: 1.4;
     position: relative;
     z-index: 1;
-    border: 1px solid #34495e;
+    border: 1px solid #424242; /* 深色边框 */
 }
 
 .code-block pre {
@@ -340,18 +419,90 @@ body {
     word-wrap: break-word;
 }
 
-/* 代码高亮样式 - 调整为适合暗色主题 */
-.keyword { color: #c39bd3; font-weight: bold; } /* 更亮的紫色 */
-.number { color: #f7dc6f; } /* 亮黄色 */
-.string { color: #82e0aa; } /* 亮绿色 */
-.comment { color: #85929e; font-style: italic; } /* 灰色注释 */
+.keyword { color: #c792ea; font-weight: bold; } /* 调整颜色以适应暗色背景 */
+.number { color: #f78c6c; }
+.string { color: #c3e88d; }
+.comment { color: #546e7a; font-style: italic; }
 
 /* ============================================
-    行内解释 - 暗色适配
-    ============================================ */
+    内联代码样式 (inline-code)
+============================================ */
+.inline-code {
+    display: inline;
+    background: #2d2d2d; /* 深色背景 */
+    color: #ff8a65; /* 强调色 */
+    padding: 2px 6px;
+    border-radius: 3px;
+    border: 1px solid #424242; /* 深色边框 */
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    line-height: 1.4;
+    word-break: break-word;
+    white-space: pre-wrap;
+    position: relative;
+    z-index: 1;
+    transition: all 0.2s ease;
+}
+
+/* 内联代码悬停效果 */
+.inline-code:hover {
+    background: #424242; /* 稍亮的深色 */
+    border-color: #546e7a;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 内联代码与注卡系统的兼容 */
+.annotation .inline-code {
+    background: rgba(255, 255, 255, 0.1);
+    color: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.8em;
+    padding: 1px 4px;
+}
+
+/* 内联代码在列表中的样式 */
+.region-content li .inline-code {
+    margin: 0 2px;
+    vertical-align: middle;
+}
+
+/* 内联代码的键盘快捷键样式 */
+kbd.inline-code {
+    background: linear-gradient(135deg, #2d2d2d 0%, #424242 100%);
+    color: #e0e0e0;
+    border: 1px solid #546e7a;
+    border-bottom: 2px solid #78909c;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+}
+
+/* 内联代码的响应式设计 */
+@media (max-width: 768px) {
+    .inline-code {
+        padding: 1px 4px;
+        font-size: 0.8em;
+        word-break: break-all;
+    }
+}
+
+/* 内联代码的打印优化 */
+@media print {
+    .inline-code {
+        background: #2d2d2d;
+        color: #000;
+        border: 1px solid #424242;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+/* ============================================
+    行内解释样式
+============================================ */
 .inline-explanation {
     display: block;
-    color: #aab7b8;
+    color: #90a4ae; /* 浅灰色 */
     opacity: 0.8;
     font-size: 0.85em;
     font-style: italic;
@@ -374,75 +525,111 @@ body {
 }
 
 /* ============================================
-    注卡系统 - 暗色适配
-    ============================================ */
+    注卡系统 - 暗色主题优化
+============================================ */
 .annotation-container {
     position: relative;
     display: inline;
-    z-index: 10;
+    cursor: pointer;
 }
 
 .annotation {
-    position: relative;
-    display: inline;
-    cursor: pointer;
-    color: #5dade2;
-    border-bottom: 1px dashed #5dade2;
-    transition: all 0.2s ease;
+    color: #64b5f6; /* 主色调 */
+    border-bottom: 1px dashed #64b5f6;
     padding: 1px 3px;
     border-radius: 2px;
-    background: rgba(93, 173, 226, 0.1);
-    z-index: 10;
+    background: rgba(100, 181, 246, 0.15); /* 半透明主色调 */
+    transition: all 0.2s ease;
+    cursor: pointer;
 }
 
 .annotation:hover {
-    background: rgba(93, 173, 226, 0.2);
+    background: rgba(100, 181, 246, 0.25);
     border-bottom-style: solid;
 }
 
-.annotation.active {
-    background: rgba(93, 173, 226, 0.3);
-    border-bottom: 2px solid #5dade2;
-    border-bottom-style: solid;
-    z-index: 10001;
-}
-
+/* 注卡弹出层 - 暗色主题 */
 .annotation-popup {
     position: absolute;
     z-index: 10000;
-    background: #2c3e50;
-    border: 1px solid #34495e;
+    background: #2d2d2d; /* 深色背景 */
+    border: 1px solid #546e7a;
     border-radius: 6px;
-    padding: 10px;
-    width: 220px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    padding: 12px;
+    width: 280px;
+    max-width: 90vw;
+    max-height: 60vh;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     font-size: 0.85em;
     line-height: 1.4;
-    color: #ecf0f1;
+    color: #e0e0e0; /* 浅色文字 */
+    
+    /* 初始隐藏状态 */
     display: none;
-    animation: fadeIn 0.2s ease;
-    pointer-events: none;
-    bottom: calc(100% + 8px);
-    left: 50%;
-    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    visibility: hidden;
+    
+    /* 定位在触发元素正下方 */
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
 }
 
+/* 核心：CSS悬停显示逻辑 */
+.annotation-container:hover .annotation-popup {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 点击锁定状态 - 使用:target伪类 */
+.annotation-popup:target {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.annotation:target {
+    background: rgba(100, 181, 246, 0.3);
+    border-bottom: 2px solid #64b5f6;
+}
+
+/* 返回链接样式 */
 .back-to-source {
     display: block;
-    margin-top: 6px;
+    margin-top: 8px;
+    padding-top: 6px;
+    border-top: 1px solid #424242; /* 深色分隔线 */
     font-size: 0.75em;
-    color: var(--remup-primary);
+    color: #64b5f6; /* 主色调 */
+    text-align: center;
     text-decoration: none;
 }
 
 .back-to-source:hover {
-    color: #7fb3d5;
     text-decoration: underline;
 }
 
+/* 关闭按钮样式 */
+.close-popup {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: #90a4ae; /* 浅灰色 */
+    text-decoration: none;
+    font-size: 1.2em;
+    line-height: 1;
+    z-index: 10001;
+}
+
+.close-popup:hover {
+    color: #e0e0e0; /* 更亮的文字 */
+}
+
 /* ============================================
-    归档系统 - 暗色适配
-    ============================================ */
+    归档系统
+============================================ */
 .archive-section {
     width: 100%;
     margin-bottom: 25px;
@@ -451,10 +638,20 @@ body {
 .archive-title {
     font-size: 1.7em;
     margin-bottom: 15px;
-    color: #ecf0f1;
+    color: #e0e0e0; /* 浅色文字 */
     border-bottom: 2px solid var(--remup-primary);
     padding-bottom: 8px;
     position: relative;
+}
+
+.archive-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--remup-primary);
 }
 
 .archive-cards {
@@ -465,16 +662,15 @@ body {
 }
 
 .archive-card {
-    background: #34495e;
+    background: #2d2d2d; /* 深色背景 */
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
-    border: 1px solid #404e5c;
+    border: 1px solid #424242; /* 深色边框 */
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
     height: 100%;
-    color: #ecf0f1;
 }
 
 .archive-card:hover {
@@ -488,14 +684,14 @@ body {
     color: var(--remup-primary);
     margin-bottom: 12px;
     padding-bottom: 8px;
-    border-bottom: 1px solid #404e5c;
+    border-bottom: 1px solid #424242; /* 深色分隔线 */
     font-weight: 600;
 }
 
 .archive-card-content {
     flex: 1;
     margin-bottom: 15px;
-    color: #bdc3c7;
+    color: #b0b0b0; /* 中等亮度文字 */
     font-size: 0.95em;
     line-height: 1.5;
 }
@@ -505,8 +701,8 @@ body {
     align-items: center;
     justify-content: center;
     padding: 10px 20px;
-    background: linear-gradient(135deg, #5dade2 0%, #3498db 100%);
-    color: white;
+    background: linear-gradient(135deg, #64b5f6 0%, #42a5f5 100%); /* 主色调渐变 */
+    color: #1e1e1e; /* 深色文字 */
     text-decoration: none;
     border-radius: 6px;
     transition: all 0.3s ease;
@@ -519,17 +715,48 @@ body {
     margin-top: auto;
 }
 
+.archive-card-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
 .archive-card-link:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 15px rgba(93, 173, 226, 0.4);
-    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    box-shadow: 0 4px 15px rgba(100, 181, 246, 0.4);
+    background: linear-gradient(135deg, #42a5f5 0%, #1e88e5 100%);
+}
+
+.archive-card-link:hover::before {
+    left: 100%;
+}
+
+.archive-card-link:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(100, 181, 246, 0.3);
+}
+
+.archive-card-link::after {
+    content: '→';
+    margin-left: 8px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.archive-card-link:hover::after {
+    transform: translateX(3px);
 }
 
 /* ============================================
-    注点归档样式 - 暗色适配
-    ============================================ */
+    注点归档样式
+============================================ */
 .vibe-archive {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    background: linear-gradient(135deg, #2d2d2d 0%, #37474f 100%); /* 深色渐变 */
     padding: 20px;
     border-radius: 8px;
     margin: 20px 0;
@@ -537,12 +764,18 @@ body {
 }
 
 .vibe-archive-title {
-    color: #ecf0f1;
+    color: #e0e0e0; /* 浅色文字 */
     font-size: 1.4em;
     margin-bottom: 15px;
     font-weight: 600;
     display: flex;
     align-items: center;
+}
+
+.vibe-archive-title::before {
+    content: '📚';
+    margin-right: 10px;
+    font-size: 1.2em;
 }
 
 .vibe-archive-cards {
@@ -552,13 +785,12 @@ body {
 }
 
 .vibe-archive-card {
-    background: #34495e;
+    background: #2d2d2d; /* 深色背景 */
     padding: 15px;
     border-radius: 6px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    border-left: 3px solid #5dade2;
+    border-left: 3px solid #64b5f6;
     transition: all 0.2s ease;
-    color: #ecf0f1;
 }
 
 .vibe-archive-card:hover {
@@ -568,20 +800,26 @@ body {
 
 .vibe-archive-item {
     padding: 8px 0;
-    border-bottom: 1px solid #404e5c;
+    border-bottom: 1px solid #424242; /* 深色分隔线 */
     font-size: 0.9em;
     display: flex;
     align-items: center;
     transition: color 0.2s ease;
-    color: #ecf0f1;
 }
 
 .vibe-archive-item:last-child {
     border-bottom: none;
 }
 
+.vibe-archive-item::before {
+    content: '•';
+    color: var(--remup-primary);
+    margin-right: 8px;
+    font-weight: bold;
+}
+
 .vibe-link {
-    color: #5dade2;
+    color: var(--remup-primary);
     text-decoration: none;
     font-weight: 500;
     transition: all 0.2s ease;
@@ -590,46 +828,25 @@ body {
 }
 
 .vibe-link:hover {
-    color: #7fb3d5;
+    color: #90caf9; /* 更亮的主色调 */
     text-decoration: underline;
     transform: translateX(2px);
 }
 
-/* ============================================
-    主题选择器 - 暗色适配
-    ============================================ */
-.theme-selector-container {
-    margin-bottom: 20px;
-    padding: 15px;
-    background: #34495e;
-    border-radius: 8px;
-    border: 1px solid #404e5c;
-}
-
-.theme-selector-container label {
-    color: #ecf0f1;
-    margin-right: 10px;
-    font-weight: 500;
-}
-
-.theme-selector-container select {
-    background: #2c3e50;
-    color: #ecf0f1;
-    border: 1px solid #5dade2;
-    border-radius: 4px;
-    padding: 5px 10px;
+.vibe-link::after {
+    content: '↗';
+    margin-left: 4px;
     font-size: 0.9em;
 }
 
-.theme-selector-container select option {
-    background: #2c3e50;
-    color: #ecf0f1;
-}
-
 /* ============================================
-    响应式设计 - 暗色适配
-    ============================================ */
+    响应式设计
+============================================ */
 @media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
     .archive-cards {
         grid-template-columns: 1fr;
         gap: 12px;
@@ -639,6 +856,10 @@ body {
         padding: 15px;
     }
     
+    .archive-card-title {
+        font-size: 1.2em;
+    }
+    
     .vibe-archive-cards {
         grid-template-columns: 1fr;
     }
@@ -646,6 +867,24 @@ body {
     .vibe-archive {
         padding: 15px;
         margin: 15px 0;
+    }
+    
+    /* 移动端注卡优化 */
+    .annotation-popup {
+        width: 280px;
+        max-width: 95vw;
+        left: 150% !important;
+        transform: translateX(-50%) !important;
+        right: auto;
+    }
+    
+    .annotation {
+        cursor: pointer;
+    }
+
+    
+    .annotation.active + .annotation-popup {
+        display: block;
     }
 }
 
@@ -661,8 +900,12 @@ body {
     }
 }
 
-/* 小屏幕优化 */
 @media (max-width: 480px) {
+    body {
+        padding: 10px;
+        font-size: 13px;
+    }
+    
     .archive-card-link {
         padding: 8px 16px;
         font-size: 0.85em;
@@ -670,6 +913,17 @@ body {
     
     .vibe-archive-item {
         font-size: 0.85em;
+    }
+    
+    .annotation-popup {
+        width: 260px;
+        padding: 10px;
+        font-size: 0.8em;
+    }
+    
+    .annotation {
+        padding: 2px 4px;
+        font-size: 0.9em;
     }
 }
 
@@ -684,7 +938,9 @@ body {
     }
 }
 
-/* 工具类 - 暗色适配 */
+/* ============================================
+    工具类
+============================================ */
 .text-center { text-align: center; }
 .mt-1 { margin-top: 8px; }
 .mb-1 { margin-bottom: 8px; }
@@ -692,7 +948,7 @@ body {
 /* 滚动锚点偏移 */
 :target {
     scroll-margin-top: 15px;
-    background-color: rgba(93, 173, 226, 0.2);
+    background-color: rgba(100, 181, 246, 0.15); /* 主色调半透明 */
     transition: background-color 0.3s ease;
 }
 
@@ -708,15 +964,15 @@ body {
         background: white;
         padding: 0;
         font-size: 12pt;
-        color: #000;
+        color: #000; /* 黑色文字 */
     }
     
     .card {
         box-shadow: none;
         border: 1px solid #ccc;
         break-inside: avoid;
-        background: white;
-        color: #000;
+        background: white !important;
+        color: #000 !important;
     }
     
     .labels-container {
@@ -729,13 +985,13 @@ body {
         width: 100%;
         box-shadow: none;
         border: 1px solid #ddd;
-        background: white;
-        color: #000;
+        background: white !important;
+        color: #000 !important;
     }
-}
-
-/* 动画效果 */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateX(-50%) translateY(3px); }
-    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    
+    /* 确保打印时所有文字可见 */
+    * {
+        color: #000 !important;
+        background: white !important;
+    }
 }

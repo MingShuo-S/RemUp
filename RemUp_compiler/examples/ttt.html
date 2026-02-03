@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generated Document - RemUp笔记</title>
-    <link rel="stylesheet" href="RemStyle.css" id="mainStylesheet">
-</head>
-<body>
-    <div class="container">
-        <!-- 主题选择器 -->
-        
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Generated Document - RemUp笔记</title>
+        <link rel="stylesheet" href="None" id="mainStylesheet">
+    </head>
+    <body>
+        <div class="container">
+            
         <div class="theme-selector-container">
             <label for="themeSelector">主题选择:</label>
             <select id="themeSelector" onchange="changeTheme(this.value)">
@@ -17,15 +16,11 @@
             </select>
         </div>
         
-        
-        <!-- 页面标题 -->
-        <header class="page-header">
-            <h1 class="page-title">Generated Document - RemUp笔记</h1>
-        </header>
-        
-        <!-- 主卡内容 -->
-        <main class="main-content">
-            
+            <header class="page-header">
+                <h1 class="page-title">Generated Document - RemUp笔记</h1>
+            </header>
+            <main class="main-content">
+                
             <section class="archive-section">
                 <h2 class="archive-title">Q&A</h2>
                 <div class="archive-cards">
@@ -40,7 +35,7 @@
             <div class="label info">
                 <span class="label-symbol">i</span>
                 <div class="label-contents">
-                    <a href="#essential" class="label-link">essential</a>
+                    <a href="#card-essential" class="label-link">essential</a>
                 </div>
             </div>
             
@@ -150,7 +145,7 @@
                 </span>
             </span>
         </span>
-        business is to have a strong team.<span class="inline-explanation">成功的商业必须有强大的团队。</span></li></ul>
+         business is to have a strong team.<span class="inline-explanation">成功的商业必须有强大的团队。</span></li></ul>
 <ol class="region-list"><li>笑</li><li>小</li></ol>
 <p>我的 
         <span class="annotation-container">
@@ -162,7 +157,7 @@
                 </span>
             </span>
         </span>
-        </p>
+         </p>
                 </div>
             </div>
         </div>
@@ -410,7 +405,7 @@
                 </span>
             </span>
         </span>
-        。<span class="inline-explanation">敦促公民对网络诈骗保持警惕</span></li></ul>
+         。<span class="inline-explanation">敦促公民对网络诈骗保持警惕</span></li></ul>
                 </div>
             </div>
         </div>
@@ -1857,10 +1852,8 @@
                 </div>
             </section>
             
-        </main>
-        
-        <!-- 注卡归档 -->
-        
+            </main>
+            
         <section class="vibe-archive">
             <h2 class="vibe-archive-title">注卡归档</h2>
             <div class="vibe-archive-cards">
@@ -1869,16 +1862,16 @@
             <h3>essential</h3>
             <div class="vibe-archive-content">
                 
-                <div class="vibe-archive-item">
-                    <a href="#annotation_1" class="vibe-link">successful</a>
-                    <p>超级成功那种</p>
-                </div>
-                
-                <div class="vibe-archive-item">
-                    <a href="#annotation_2" class="vibe-link">妈妈米亚</a>
-                    <p>表感叹</p>
-                </div>
-                
+                    <div class="vibe-archive-item">
+                        <a href="#annotation_1" class="vibe-link">successful</a>
+                        <p>超级成功那种</p>
+                    </div>
+                    
+                    <div class="vibe-archive-item">
+                        <a href="#annotation_2" class="vibe-link">妈妈米亚</a>
+                        <p>表感叹</p>
+                    </div>
+                    
             </div>
         </div>
         
@@ -1886,21 +1879,19 @@
             <h3>vigilant</h3>
             <div class="vibe-archive-content">
                 
-                <div class="vibe-archive-item">
-                    <a href="#annotation_3" class="vibe-link">网络诈骗</a>
-                    <p>指通过互联网进行的欺诈行为</p>
-                </div>
-                
+                    <div class="vibe-archive-item">
+                        <a href="#annotation_3" class="vibe-link">网络诈骗</a>
+                        <p>指通过互联网进行的欺诈行为</p>
+                    </div>
+                    
             </div>
         </div>
         
             </div>
         </section>
         
-        
-        <!-- 其他归档 -->
-        <nav class="other-archives">
-            
+            <nav class="other-archives">
+                
             <section class="archives-nav">
                 <h2 class="archive-title">归档导航</h2>
                 
@@ -1948,145 +1939,72 @@
             
             </section>
             
-        </nav>
-    </div>
-    
-    <script>
-        // 主题切换功能
+            </nav>
+        </div>
+        <script>
+        // 只需要处理主题切换和基础跳转功能
         function changeTheme(themeName) {
             const stylesheet = document.getElementById('mainStylesheet');
-            stylesheet.href = themeName + '.css';
-            
-            // 保存用户选择到本地存储
-            localStorage.setItem('preferredTheme', themeName);
+            if (stylesheet) {
+                stylesheet.href = `static/css/${themeName}.css`;
+                localStorage.setItem('preferredTheme', themeName);
+            }
         }
-        
-        // 页面加载时应用保存的主题
-        document.addEventListener('DOMContentLoaded', function() {
+
+        // 平滑滚动功能
+        function setupSmoothScroll() {
+            // 为所有内部链接添加平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'center' 
+                        });
+                    }
+                });
+            });
+        }
+
+        // 响应式布局调整
+        function adjustGridLayout() {
+            const width = window.innerWidth;
+            let layout = '1fr';
+            
+            if (width >= 1200) layout = 'repeat(auto-fit, minmax(500px, 1fr))';
+            else if (width >= 1024) layout = 'repeat(auto-fit, minmax(450px, 1fr))';
+            else if (width >= 768) layout = 'repeat(auto-fit, minmax(400px, 1fr))';
+            
+            document.querySelectorAll('.archive-cards').forEach(container => {
+                container.style.gridTemplateColumns = layout;
+            });
+        }
+
+        // 页面加载初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            // 主题初始化
             const savedTheme = localStorage.getItem('preferredTheme');
-            if (savedTheme) {
-                const selector = document.getElementById('themeSelector');
-                if (selector) {
-                    selector.value = savedTheme;
-                    changeTheme(savedTheme);
-                }
-            }
-        });
-        
-        // 原有的交互功能
-        document.addEventListener('DOMContentLoaded', function() {
-            // 1. 标签跳转功能
-            const labelLinks = document.querySelectorAll('.label-link');
-            labelLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ 
-                            behavior: 'smooth', 
-                            block: 'center' 
-                        });
-                        
-                        targetElement.style.backgroundColor = 'rgba(255, 255, 0, 0.3)';
-                        setTimeout(() => {
-                            targetElement.style.backgroundColor = '';
-                        }, 2000);
-                    }
-                });
-            });
-
-            // 2. 注卡跳转功能
-            const vibeLinks = document.querySelectorAll('.vibe-link, .back-to-source');
-            vibeLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ 
-                            behavior: 'smooth', 
-                            block: 'center' 
-                        });
-                        
-                        if (targetElement.classList.contains('annotation')) {
-                            targetElement.style.backgroundColor = 'rgba(52, 152, 219, 0.3)';
-                            setTimeout(() => {
-                                targetElement.style.backgroundColor = '';
-                            }, 2000);
-                        }
-                    }
-                });
-            });
-
-            // 3. 归档导航跳转
-            const archiveLinks = document.querySelectorAll('.archive-card-link');
-            archiveLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ 
-                            behavior: 'smooth', 
-                            block: 'start' 
-                        });
-                    }
-                });
-            });
-
-            // 4. 注卡悬停效果优化
-            const annotations = document.querySelectorAll('.annotation');
-            annotations.forEach(annotation => {
-                annotation.addEventListener('mouseenter', function() {
-                    annotations.forEach(a => a.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
-
-            // 5. 响应式网格布局调整
-            function adjustGridLayout() {
-                const archiveCards = document.querySelectorAll('.archive-cards');
-                const screenWidth = window.innerWidth;
-                
-                archiveCards.forEach(container => {
-                    if (screenWidth >= 1200) {
-                        container.style.gridTemplateColumns = 'repeat(auto-fit, minmax(500px, 1fr))';
-                    } else if (screenWidth >= 1024) {
-                        container.style.gridTemplateColumns = 'repeat(auto-fit, minmax(450px, 1fr))';
-                    } else if (screenWidth >= 768) {
-                        container.style.gridTemplateColumns = 'repeat(auto-fit, minmax(400px, 1fr))';
-                    } else {
-                        container.style.gridTemplateColumns = '1fr';
-                    }
-                });
+            const selector = document.getElementById('themeSelector');
+            if (savedTheme && selector) {
+                selector.value = savedTheme;
+                changeTheme(savedTheme);
             }
 
+            // 设置平滑滚动
+            setupSmoothScroll();
+            
+            // 响应式布局
             adjustGridLayout();
             window.addEventListener('resize', adjustGridLayout);
 
-            // 6. 页面加载时的锚点跳转处理
+            // 锚点跳转
             if (window.location.hash) {
-                const targetElement = document.querySelector(window.location.hash);
-                if (targetElement) {
-                    setTimeout(() => {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }, 100);
-                }
+                const target = document.querySelector(window.location.hash);
+                if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 100);
             }
-
-            // 7. 键盘导航支持
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    annotations.forEach(annotation => {
-                        annotation.classList.remove('active');
-                    });
-                }
-            });
         });
-    </script>
-</body>
-</html>
+        </script>
+    </body>
+    </html>

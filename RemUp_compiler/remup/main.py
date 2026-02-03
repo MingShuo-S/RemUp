@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-RemUp命令行接口 v3.0 - 支持多主题系统和实时预览
+RemUp命令行接口 v3.2 - 修复实时预览参数错误
 """
 
 import argparse
@@ -11,21 +11,22 @@ from remup.compiler import Compiler, compile_remup, compile_remup_directory
 def main():
     """主函数 - 命令行接口"""
     parser = argparse.ArgumentParser(
-        description='RemUp编译器 - 将RemUp标记语言编译为交互式HTML笔记',
+        description='RemUp编译器 v3.2 - 将RemUp标记语言编译为交互式HTML笔记',
         epilog='''
 示例:
   remup notes.remup                    # 编译单个文件
   remup notes.remup -o output.html     # 指定输出文件
-  remup notes.remup -t DarkTheme        # 使用暗色主题
-  remup ./notes -d                      # 编译整个目录
+  remup notes.remup -t DarkTheme       # 使用暗色主题
+  remup ./notes -d                     # 编译整个目录
   remup live notes.remup               # 🔥 启动实时预览
-  remup --list-themes                   # 列出可用主题
+  remup --list-themes                  # 列出可用主题
+  remup --version                      # 显示版本信息
         ''',
         formatter_class=argparse.RawDescriptionHelpFormatter
     )
     
     # 创建子命令解析器
-    subparsers = parser.add_subparsers(dest='command', help='可用命令')
+    subparsers = parser.add_subparsers(dest='command', help='可用命令', metavar='命令')
     
     # build 命令（默认行为，保持向后兼容）
     build_parser = subparsers.add_parser('build', help='编译RemUp文件（默认命令）')
@@ -56,7 +57,12 @@ def main():
     
     # 显示版本信息
     if args.version:
-        print("RemUp编译器 v3.0 - 多主题支持版 + 实时预览")
+        print("RemUp编译器 v3.2 - 多主题支持版 + 实时预览 + 静态资源管理")
+        print("功能特性:")
+        print("  • 支持多CSS主题切换")
+        print("  • 自动复制静态资源文件")
+        print("  • 实时预览和监控")
+        print("  • 完整的Markdown行内语法支持")
         return 0
     
     # 列出可用主题
@@ -67,10 +73,11 @@ def main():
             print("🎨 可用主题:")
             for theme in themes:
                 print(f"  • {theme}")
-            print(f"\n💡 使用示例: remup input.remup -t {themes[0]}")
+            print(f"\n💡 使用示例: remup build input.remup -t {themes[0]}")
+            print("💡 静态资源: 编译时会自动复制CSS文件到输出目录的static/css/")
         else:
             print("❌ 未找到任何主题文件")
-            print("💡 请在 static/css/ 目录下添加CSS主题文件")
+            print("💡 请在项目根目录的static/css/目录下添加CSS主题文件")
         return 0
     
     # 根据命令分发处理
@@ -101,9 +108,14 @@ def _add_build_arguments(parser):
                             help='选择CSS主题（默认: RemStyle）')
     output_group.add_argument('--title', 
                             help='自定义页面标题')
+    
+    # 静态资源选项
+    static_group = parser.add_argument_group('静态资源选项')
+    static_group.add_argument('--no-static', action='store_true',
+                           help='不复制静态CSS文件（高级选项）')
 
 def _add_live_arguments(parser):
-    """添加live命令的参数"""
+    """添加live命令的参数 - 修复参数列表"""
     parser.add_argument('input', help='要监控的.remup文件路径')
     parser.add_argument('-p', '--port', type=int, default=8000,
                        help='预览服务器端口（默认: 8000）')
@@ -111,14 +123,18 @@ def _add_live_arguments(parser):
                        help='选择CSS主题（默认: RemStyle）')
     parser.add_argument('--no-browser', action='store_true',
                        help='不自动打开浏览器')
-    parser.add_argument('--host', default='localhost',
-                       help='服务器主机（默认: localhost）')
+    # 移除不存在的host参数
+    # parser.add_argument('--host', default='localhost',
+    #                    help='服务器主机（默认: localhost）')
+    parser.add_argument('--no-static', action='store_true',
+                       help='不复制静态CSS文件（高级选项）')
 
 def _handle_build_command(args):
     """处理build命令"""
     # 验证输入参数
     if not args.input:
         print("❌ 请指定输入文件或目录")
+        print("💡 使用示例: remup build notes.remup")
         return 1
     
     input_path = Path(args.input)
@@ -131,6 +147,10 @@ def _handle_build_command(args):
         
         # 编译目录
         if args.directory or input_path.is_dir():
+            print(f"📁 编译目录: {input_path}")
+            if args.recursive:
+                print("🔍 递归处理子目录")
+            
             result_files = compile_remup_directory(
                 input_dir=str(input_path),
                 output_dir=args.output,
@@ -140,6 +160,8 @@ def _handle_build_command(args):
             
             if result_files:
                 print(f"✅ 成功编译 {len(result_files)} 个文件")
+                if not args.no_static:
+                    print("📄 静态CSS文件已自动复制到各输出目录的static/css/")
                 return 0
             else:
                 print("❌ 没有文件被成功编译")
@@ -147,6 +169,7 @@ def _handle_build_command(args):
         
         # 编译单个文件
         else:
+            print(f"🔨 编译文件: {input_path}")
             result_path = compile_remup(
                 input_path=str(input_path),
                 output_path=args.output,
@@ -154,14 +177,17 @@ def _handle_build_command(args):
                 page_title=args.title
             )
             print(f"✅ 编译完成: {result_path}")
+            if not args.no_static:
+                print("📄 静态CSS文件已自动复制到输出目录的static/css/")
             return 0
             
     except Exception as e:
         print(f"❌ 编译错误: {e}")
+        print("💡 检查输入文件格式是否正确，或使用 --help 查看帮助")
         return 1
 
 def _handle_live_command(args):
-    """处理live命令 - 启动实时预览"""
+    """处理live命令 - 启动实时预览（修复参数错误）"""
     try:
         from remup.live_preview import start_live_preview
     except ImportError as e:
@@ -179,12 +205,22 @@ def _handle_live_command(args):
         return 1
     
     try:
+        print(f"🔥 启动实时预览: {input_path}")
+        print(f"🌐 预览地址: http://localhost:{args.port}")  # 固定为localhost
+        print(f"🎨 使用主题: {args.theme}")
+        if not args.no_browser:
+            print("🖥️  自动打开浏览器")
+        if not args.no_static:
+            print("📄 静态CSS文件将随编译自动更新")
+        
+        # 修复：移除不存在的host和open_browser参数
         return start_live_preview(
             file_path=str(input_path),
             port=args.port,
-            host=args.host,
-            theme=args.theme,
-            open_browser=not args.no_browser
+            theme=args.theme
+            # 移除不存在的参数：
+            # host=args.host,
+            # open_browser=not args.no_browser
         )
     except KeyboardInterrupt:
         print("\n🛑 实时预览已停止")

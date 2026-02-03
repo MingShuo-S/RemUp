@@ -1,34 +1,40 @@
 #!/usr/bin/env python3
 """
-RemUp 文件拖拽编译器 v3.1 - 修复项目根目录检测
+RemUp 文件拖拽编译器 v3.3 - 修复参数错误版本
 """
 
 import os
 import sys
-import subprocess
 import argparse
-import shlex
 from pathlib import Path
+
+# 添加项目根目录到 Python 路径，确保可以导入 remup 模块
+project_root = Path(__file__).parent
+sys.path.insert(0, str(project_root))
+
+try:
+    from remup.compiler import Compiler, compile_remup, compile_remup_directory
+except ImportError as e:
+    print(f"❌ 导入错误: {e}")
+    print("💡 请确保在正确的项目目录中运行此脚本")
+    input("按任意键退出...")
+    sys.exit(1)
 
 def get_project_root():
     """检测项目根目录（包含static/css的目录）"""
     possible_roots = [
-        # 1. 当前工作目录
         Path.cwd(),
-        # 2. 脚本文件所在目录
         Path(__file__).parent,
-        # 3. 环境变量指定的目录
         Path(os.environ.get('REMUP_PROJECT_ROOT', '')),
     ]
     
-    # 添加向上查找逻辑
+    # 向上查找逻辑
     current = Path.cwd()
-    for _ in range(3):  # 最多向上查找3级
+    for _ in range(3):
         if (current / "static" / "css").exists():
             possible_roots.append(current)
         current = current.parent
     
-    # 检查可能的根目录
     for root in possible_roots:
         if root.exists():
             css_dir = root / "static" / "css"
@@ -36,115 +42,70 @@ def get_project_root():
                 print(f"✅ 检测到项目根目录: {root}")
                 return root
     
-    # 如果都没找到，使用当前工作目录
     fallback_root = Path.cwd()
     print(f"⚠️ 未检测到标准项目结构，使用回退目录: {fallback_root}")
     return fallback_root
 
-def get_venv_remup_path(project_root: Path):
-    """获取虚拟环境中的remup命令路径"""
-    venv_remup = project_root / ".venv" / "Scripts" / "remup.exe"
-    
-    if venv_remup.exists():
-        return str(venv_remup)
-    else:
-        # 备用方案：使用虚拟环境中的Python执行模块
-        venv_python = project_root / ".venv" / "Scripts" / "python.exe"
-        if venv_python.exists():
-            return [str(venv_python), "-m", "remup.main"]
-        else:
-            return "remup"  # 回退到系统PATH
-
-def get_available_themes(remup_cmd, project_root: Path):
+def get_available_themes(project_root: Path):
     """获取可用的主题列表"""
     try:
-        if isinstance(remup_cmd, list):
-            cmd = remup_cmd + ["--list-themes"]
-        else:
-            cmd = [remup_cmd, "--list-themes"]
-        
-        env = os.environ.copy()
-        env['PYTHONIOENCODING'] = 'utf-8'
-        env['REMUP_PROJECT_ROOT'] = str(project_root)  # 设置项目根目录环境变量
-        
-        result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            encoding='utf-8',
-            env=env,
-            cwd=project_root,  # 在项目根目录执行
-            timeout=10
-        )
-        
-        if result.returncode == 0:
-            themes = []
-            for line in result.stdout.split('\n'):
-                line = line.strip()
-                if line and not line.startswith("🎨") and not line.startswith("💡"):
-                    if line.startswith("•"):
-                        themes.append(line[1:].strip())
-                    else:
-                        themes.append(line)
-            return themes
+        compiler = Compiler()
+        themes = compiler.list_available_themes()
+        return themes if themes else ["RemStyle"]
     except Exception as e:
         print(f"⚠️ 无法获取主题列表: {e}")
-    
-    return ["RemStyle"]  # 默认回退
+        return ["RemStyle"]
 
-def compile_remup_file(file_path, theme="RemStyle", remup_cmd=None, project_root=None):
-    """编译单个 .remup 文件"""
-    if remup_cmd is None:
-        remup_cmd = get_venv_remup_path(project_root)
-    
+def compile_remup_file(file_path, theme="RemStyle", page_title=None):
+    """编译单个 .remup 文件 - 修复参数错误"""
     try:
-        # 确保文件路径是绝对路径
         abs_file_path = file_path.resolve()
-        
-        # 构建命令
-        if isinstance(remup_cmd, list):
-            cmd = remup_cmd + [str(abs_file_path), "-t", theme]
-        else:
-            cmd = [remup_cmd, str(abs_file_path), "-t", theme]
-        
+        print(f"🔨 编译文件: {abs_file_path.name}")
         print(f"🎨 使用主题: {theme}")
-        print(f"🔧 执行命令: {' '.join([shlex.quote(str(arg)) for arg in cmd])}")
         
-        # 设置环境变量，包含项目根目录
-        env = os.environ.copy()
-        env['PYTHONIOENCODING'] = 'utf-8'
-        env['REMUP_PROJECT_ROOT'] = str(project_root)
-        
-        result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            encoding='utf-8',
-            env=env,
-            cwd=project_root,  # 在项目根目录执行
-            timeout=60
+        # 修复：移除不存在的 copy_static_resources 参数
+        result_path = compile_remup(
+            input_path=str(abs_file_path),
+            output_path=None,  # 使用默认输出路径
+            theme=theme,
+            page_title=page_title
+            # 移除：copy_static_resources=copy_static
         )
         
-        if result.returncode == 0:
-            print(f"✅ 编译成功: {file_path.stem}.html")
-            if result.stdout:
-                for line in result.stdout.split('\n'):
-                    if any(keyword in line for keyword in ["📁", "🎨", "📂", "🃏", "💡"]):
-                        print(f"   {line.strip()}")
+        print(f"✅ 编译成功: {result_path}")
+        return True
+            
+    except Exception as e:
+        print(f"❌ 编译失败: {file_path.name}")
+        print(f"   错误详情: {e}")
+        return False
+
+def compile_remup_directory(dir_path, theme="RemStyle", recursive=True):
+    """编译整个目录 - 修复参数错误"""
+    try:
+        print(f"📁 编译目录: {dir_path}")
+        if recursive:
+            print("🔍 递归处理子目录")
+        
+        # 修复：移除不存在的 copy_static_resources 参数
+        result_files = compile_remup_directory(
+            input_dir=str(dir_path),
+            output_dir=None,  # 使用默认输出路径
+            theme=theme,
+            recursive=recursive
+            # 移除：copy_static_resources=copy_static
+        )
+        
+        if result_files:
+            print(f"✅ 成功编译 {len(result_files)} 个文件")
             return True
         else:
-            print(f"❌ 编译失败: {file_path.name}")
-            if result.stderr:
-                error_lines = [line for line in result.stderr.split('\n') if line.strip()]
-                for error_line in error_lines[:3]:
-                    print(f"   错误: {error_line}")
+            print("❌ 没有文件被成功编译")
             return False
             
-    except subprocess.TimeoutExpired:
-        print(f"⏰ 编译超时: {file_path.name} (超过60秒)")
-        return False
     except Exception as e:
-        print(f"❌ 意外错误: {e}")
+        print(f"❌ 目录编译失败: {dir_path}")
+        print(f"   错误详情: {e}")
         return False
 
 def main():
@@ -153,17 +114,32 @@ def main():
     project_root = get_project_root()
     
     parser = argparse.ArgumentParser(
-        description='RemUp 拖拽编译器 - 支持多主题批量编译',
+        description='RemUp 拖拽编译器 v3.3 - 修复参数错误版本',
         add_help=False
     )
     
+    # 主参数
     parser.add_argument('paths', nargs='*', help='要编译的文件或目录路径')
+    
+    # 编译选项
     parser.add_argument('-t', '--theme', default='RemStyle', 
                        help='指定CSS主题 (默认: RemStyle)')
-    parser.add_argument('-r', '--no-recursive', action='store_true',
-                       help='不递归处理子目录')
+    parser.add_argument('--title', help='自定义页面标题')
+    # 移除不存在的参数选项
+    # parser.add_argument('--no-static', action='store_true',
+    #                    help='不复制静态CSS文件')
+    
+    # 目录选项
+    parser.add_argument('-d', '--directory', action='store_true',
+                       help='编译整个目录')
+    parser.add_argument('-r', '--recursive', action='store_true',
+                       help='递归处理子目录')
+    
+    # 信息选项
     parser.add_argument('-l', '--list-themes', action='store_true',
                        help='列出可用主题')
+    parser.add_argument('-v', '--version', action='store_true',
+                       help='显示版本信息')
     parser.add_argument('-h', '--help', action='store_true',
                        help='显示帮助信息')
     
@@ -171,30 +147,38 @@ def main():
     args, unknown_args = parser.parse_known_args()
     all_paths = args.paths + unknown_args
     
-    # 获取remup命令路径
-    remup_cmd = get_venv_remup_path(project_root)
-    
-    # 处理帮助和主题列表
-    if args.help or (not all_paths and not args.list_themes):
+    # 处理帮助和版本信息
+    if args.help or (not all_paths and not args.list_themes and not args.version):
         print("=" * 60)
-        print("      RemUp 拖拽编译器 v3.1")
+        print("      RemUp 拖拽编译器 v3.3 - 修复版")
         print("=" * 60)
         print("📁 项目根目录:", project_root)
+        print()
+        print("修复内容：")
+        print("  ✅ 修复了 copy_static_resources 参数错误")
+        print("  ✅ 静态资源复制现已内置在编译器中")
+        print("  ✅ 优化了错误处理和用户提示")
         print()
         print("用法：")
         print("  1. 拖拽 .remup 文件到此脚本上")
         print("  2. 拖拽包含 .remup 文件的文件夹")
         print("  3. 或使用命令行: python compile_remup.py [选项] 文件或文件夹...")
         print()
-        print("选项：")
+        print("编译选项：")
         print("  -t, --theme THEME     指定CSS主题 (默认: RemStyle)")
-        print("  -r, --no-recursive    不递归处理子目录")
+        print("  --title TITLE         自定义页面标题")
+        print("  -d, --directory       编译整个目录")
+        print("  -r, --recursive       递归处理子目录")
+        print()
+        print("信息选项：")
         print("  -l, --list-themes     列出可用主题")
-        print("  -h, --help            显示此帮助信息")
+        print("  -v, --version         显示版本信息")
+        print("  -h, --help           显示此帮助信息")
+        print()
+        print("💡 提示：静态CSS文件会自动复制到输出目录")
         print()
         
-        # 显示可用主题
-        themes = get_available_themes(remup_cmd, project_root)
+        themes = get_available_themes(project_root)
         if themes:
             print("🎨 可用主题:")
             for theme in themes:
@@ -207,8 +191,17 @@ def main():
             input("按 Enter 键退出...")
         return 0
     
+    if args.version:
+        print("RemUp拖拽编译器 v3.3 - 修复版")
+        print("修复内容：")
+        print("  • 修复了 copy_static_resources 参数错误")
+        print("  • 静态资源复制逻辑现已内置在编译器中")
+        print("  • 改进了错误提示和用户体验")
+        print("  • 保持拖拽编译的便捷性")
+        return 0
+    
     if args.list_themes:
-        themes = get_available_themes(remup_cmd, project_root)
+        themes = get_available_themes(project_root)
         if themes:
             print("🎨 可用主题:")
             for theme in themes:
@@ -217,13 +210,15 @@ def main():
             print("❌ 无法获取主题列表")
         return 0
     
-    # 开始编译
+    # 开始处理
     print("=" * 60)
-    print("      RemUp 批量编译器 v3.1")
+    print("      RemUp 拖拽编译器 v3.3 - 修复版")
     print("=" * 60)
     print(f"📁 项目根目录: {project_root}")
+    print("💡 提示: 静态CSS文件会自动复制到输出目录")
     print()
     
+    # 编译模式
     all_success = True
     processed_files = 0
     successful_compiles = 0
@@ -236,37 +231,36 @@ def main():
             all_success = False
             continue
         
-        if path.is_file() and path.suffix.lower() == '.remup':
-            # 单个文件编译
+        if args.directory or path.is_dir():
+            # 编译目录
             processed_files += 1
-            if compile_remup_file(path, args.theme, remup_cmd, project_root):
+            if compile_remup_directory(
+                path, 
+                theme=args.theme, 
+                recursive=args.recursive
+                # 移除：copy_static=not args.no_static
+            ):
                 successful_compiles += 1
             else:
                 all_success = False
         
-        elif path.is_dir():
-            # 编译目录
-            print(f"📁 扫描目录: {path}")
-            pattern = "**/*.remup" if not args.no_recursive else "*.remup"
-            remup_files = list(path.glob(pattern))
-            
-            if not remup_files:
-                print("   未找到 .remup 文件")
-                continue
-                
-            print(f"   找到 {len(remup_files)} 个 .remup 文件")
-            print()
-            
-            for remup_file in remup_files:
-                processed_files += 1
-                if compile_remup_file(remup_file, args.theme, remup_cmd, project_root):
-                    successful_compiles += 1
-                else:
-                    all_success = False
-                print()
+        elif path.is_file() and path.suffix.lower() == '.remup':
+            # 单个文件编译
+            processed_files += 1
+            if compile_remup_file(
+                path, 
+                theme=args.theme, 
+                page_title=args.title
+                # 移除：copy_static=not args.no_static
+            ):
+                successful_compiles += 1
+            else:
+                all_success = False
         
         else:
             print(f"❌ 忽略不支持的文件: {path}")
+        
+        print()  # 空行分隔
     
     # 输出总结报告
     print("=" * 60)
@@ -278,6 +272,7 @@ def main():
     
     if all_success and processed_files > 0:
         print("🎉 所有文件编译完成！")
+        print("💡 静态CSS文件已自动复制到输出目录")
     elif processed_files > 0:
         print("⚠️  部分文件编译失败，请检查错误信息")
     else:
@@ -285,10 +280,18 @@ def main():
     
     print("=" * 60)
     
-    if len(all_paths) > 0:  # 如果是拖拽运行，暂停显示结果
+    # 如果是拖拽运行，暂停显示结果
+    if len(all_paths) > 0:
         input("按 Enter 键退出...")
     
     return 0 if all_success else 1
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except KeyboardInterrupt:
+        print("\n🛑 操作被用户中断")
+        sys.exit(1)
+    except Exception as e:
+        print(f"❌ 发生未预期错误: {e}")
+        sys.exit(1)

@@ -10,7 +10,7 @@
 </div>
 <div align="center">
 <a href="https://github.com/MingShuo-S/PPL_Project-RemUp">
-    <img src="Logo.svg" alt="RemUp Logo" width="500" height="120" style="border-radius: 8px;  object-fit: cover;object-position: center; 
+    <img src="static\Logo.svg" alt="RemUp Logo" width="500" height="120" style="border-radius: 8px;  object-fit: cover;object-position: center; 
 border: 0px solid #ddd;">
   </a>
 
