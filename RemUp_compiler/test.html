@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Generated Document - RemUp笔记</title>
+        <link rel="stylesheet" href="RemStyle" id="mainStylesheet">
+    </head>
+    <body>
+        <div class="container">
+            
+        <div class="theme-selector-container">
+            <label for="themeSelector">主题选择:</label>
+            <select id="themeSelector" onchange="changeTheme(this.value)">
+                <option value="CompactStyle" >CompactStyle</option><option value="DarkTheme" >DarkTheme</option><option value="RemStyle" selected>RemStyle</option>
+            </select>
+        </div>
+        
+            <header class="page-header">
+                <h1 class="page-title">Generated Document - RemUp笔记</h1>
+            </header>
+            <main class="main-content">
+                
+            <section class="archive-section">
+                <h2 class="archive-title">用前提示</h2>
+                <div class="archive-cards">
+            
+        <div class="card" id="card-tips">
+            <h2 class="card-title">tips</h2>
+            
+            <!-- 标签区域 -->
+            
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">实时预览</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>如果使用<code class='inline-code'>remup live test.remup</code>这样的实时预览功能，修改之后记得手动刷新网页<span class="inline-explanation">有个不用刷新网页的，但是目前效果不太好，没有集成进来。</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">一些限制</div>
+            <div class="region-content">
+                <div class="content">
+                    <ul class="region-list"><li>主卡内的文字必须有所属<strong>区域主题</strong>，否则会被省略</li><li><strong>标签</strong>必须放在<strong>第一个区域</strong>之前</li><li><strong>行内解释</strong>必须放在相应行的<strong>最后</strong><span class="inline-explanation">这些目前主要是编译器限制，后续可能会慢慢修改</span></li></ul>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+                </div>
+            </section>
+            
+
+            <section class="archive-section">
+                <h2 class="archive-title">RemUp功能展示</h2>
+                <div class="archive-cards">
+            
+        <div class="card" id="card-欢迎使用remup">
+            <h2 class="card-title">欢迎使用RemUp</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label info">
+                <span class="label-symbol">i</span>
+                <div class="label-contents">
+                    <span class="label-content">互动教程</span>
+                </div>
+            </div>
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <a href="#card-重要提示点击标签可跳转" class="label-link">重要提示>>点击标签可跳转</a>
+                </div>
+            </div>
+            
+            <div class="label reference">
+                <span class="label-symbol">></span>
+                <div class="label-contents">
+                    <span class="label-content">学习指南</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">欢迎词</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><strong>RemUp</strong>是一个专为<strong>学习记忆</strong>设计的轻量级标记语言。这个文件将逐步引导您了解RemUp的所有核心功能。<span class="inline-explanation">建议您先编译此文件，然后在浏览器中实时查看效果</span></p>
+<p><img src="static\Logo.svg" alt="RemUp Logo"></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">如何开始</div>
+            <div class="region-content">
+                <div class="content">
+                    <ol class="region-list"><li><strong>环境安装</strong>：按照README.md完成Python环境配置</li><li><strong>首次编译</strong>：将本文件拖拽到<code class='inline-code'>compile_remup.py</code>上，或使用命令：<code class='inline-code'>remup 本文件名.remup</code></li><li><strong>实时预览</strong>：进阶用户可使用<code class='inline-code'>remup live 本文件名.remup</code>启动实时监控</li></ol>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">基础语法结构</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>RemUp采用<strong>分层结构</strong>组织内容：</p>
+<ul class="region-list"><li><strong>归档(Archive)</strong>：<code class='inline-code'>--&lt;归档名&gt;--</code> - 内容的大类分组</li><li><strong>主卡(Card)</strong>：<code class='inline-code'>&lt;+主题</code> 到 <code class='inline-code'>/+&gt;</code> - 知识的核心单元</li><li><strong>区域(Region)</strong>：<code class='inline-code'>---区域名</code> - 卡片内的内容分区</li><li><strong>标签(Label)</strong>：<code class='inline-code'>(符号: 内容)</code> - 右上角的标识和导航</li></ul>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-文本格式化功能">
+            <h2 class="card-title">文本格式化功能</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label info">
+                <span class="label-symbol">i</span>
+                <div class="label-contents">
+                    <span class="label-content">基础语法</span>
+                </div>
+            </div>
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">必看</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">文字样式效果</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><strong>加粗文本</strong> - 用于强调重点内容</p>
+<p><em>斜体文本</em> - 用于引用或次要说明</p>
+<p><strong><em>加粗且斜体</em></strong> - 用于特别重要的内容</p>
+<p><mark>高亮显示</mark> - 用于关键信息标记</p>
+<p><del>删除线文本</del> - 用于过时内容</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">字体大小控制</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><span style="font-size: 1.2em; display: inline-block;">放大1.2倍</span> - 用于小标题或重点语句</p>
+<p><span style="font-size: 1.5em; display: inline-block;">放大1.5倍</span> - 用于主要标题或特别强调</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">行内解释功能</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>这是普通文本<span class="inline-explanation">这是灰色解释文字 - 用于补充说明</span></p>
+<p>每个语法元素都可以添加解释<span class="inline-explanation">帮助理解功能用途</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">代码和特殊格式</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>行内代码：<code class='inline-code'>print(&quot;Hello RemUp&quot;)</code> - 用于代码片段或术语</p>
+<p> 
+        <span class="annotation-container">
+            <span class="annotation" id="annotation_1">
+                注卡批注
+                <span class="annotation-popup">
+                    将鼠标悬停在灰色文字上查看详细说明
+                    <a href="#annotation_1" class="back-to-source">↩ 跳回原文</a>
+                </span>
+            </span>
+        </span>
+         - 核心交互功能</p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-标签系统详解">
+            <h2 class="card-title">标签系统详解</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label info">
+                <span class="label-symbol">i</span>
+                <div class="label-contents">
+                    <span class="label-content">导航功能</span>
+                </div>
+            </div>
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">交互演示</span>
+                </div>
+            </div>
+            
+            <div class="label question">
+                <span class="label-symbol">?</span>
+                <div class="label-contents">
+                    <span class="label-content">这是什么？</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">标签类型说明</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>RemUp提供多种标签类型：</p>
+<ul class="region-list"><li><strong>重要提示</strong> <code class='inline-code'>(!: 内容)</code> - 红色，用于关键信息</li><li><strong>学习指南</strong> <code class='inline-code'>(&gt;: 内容)</code> - 蓝色，用于指导性内容</li><li><strong>问题提示</strong> <code class='inline-code'>(?: 内容)</code> - 绿色，用于疑问或思考</li><li><strong>信息补充</strong> <code class='inline-code'>(i: 内容)</code> - 灰色，用于辅助信息</li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">标签跳转功能</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><strong>标签间跳转</strong>：点击标签中的<code class='inline-code'>#目标</code>即可跳转到对应卡片<span class="inline-explanation">尝试点击右上角的"#必看"标签</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">自定义跳转</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>`(!: #文本格式化功能<span class="inline-explanation">点击跳转到文本格式化卡片)`</span></p>
+<p>`(>: #欢迎使用RemUp<span class="inline-explanation">点击返回欢迎卡片)</span></p>
+<p> 
+        <span class="annotation-container">
+            <span class="annotation" id="annotation_2">
+                标签跳转
+                <span class="annotation-popup">
+                    实现知识点之间的快速导航，构建知识网络
+                    <a href="#annotation_2" class="back-to-source">↩ 跳回原文</a>
+                </span>
+            </span>
+        </span>
+         是RemUp的核心优势之一</p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-注卡交互系统">
+            <h2 class="card-title">注卡交互系统</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label info">
+                <span class="label-symbol">i</span>
+                <div class="label-contents">
+                    <span class="label-content">高级功能</span>
+                </div>
+            </div>
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">悬停演示</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">什么是注卡？</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>注卡是RemUp的<strong>核心交互功能</strong>，格式为：<code class='inline-code'> '内容'[批注] </code></p>
+<p>将鼠标悬停在 
+        <span class="annotation-container">
+            <span class="annotation" id="annotation_4">
+                蓝色背景的文字
+                <span class="annotation-popup">
+                    这里会显示详细的批注说明
+                    <a href="#annotation_4" class="back-to-source">↩ 跳回原文</a>
+                </span>
+            </span>
+        </span>
+         上查看效果</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">注卡使用场景</div>
+            <div class="region-content">
+                <div class="content">
+                    <ol class="region-list"><li><strong>术语解释</strong>： 
+        <span class="annotation-container">
+            <span class="annotation" id="annotation_5">
+                Python
+                <span class="annotation-popup">
+                    一种流行的编程语言，以简洁易读著称
+                    <a href="#annotation_5" class="back-to-source">↩ 跳回原文</a>
+                </span>
+            </span>
+        </span>
+        </li><li><strong>概念补充</strong>： 
+        <span class="annotation-container">
+            <span class="annotation" id="annotation_6">
+                机器学习
+                <span class="annotation-popup">
+                    让计算机从数据中学习模式而不直接编程
+                    <a href="#annotation_6" class="back-to-source">↩ 跳回原文</a>
+                </span>
+            </span>
+        </span>
+        </li><li><strong>示例说明</strong>： 
+        <span class="annotation-container">
+            <span class="annotation" id="annotation_7">
+                编译
+                <span class="annotation-popup">
+                    将源代码转换为可执行文件的过程
+                    <a href="#annotation_7" class="back-to-source">↩ 跳回原文</a>
+                </span>
+            </span>
+        </span>
+        </li></ol>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">双向跳转功能</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>每个注卡都支持<strong>双向跳转</strong>：</p>
+<ul class="region-list"><li>从原文跳转到注卡归档</li><li>从注卡归档跳回原文位置</li></ul>
+<p> 
+        <span class="annotation-container">
+            <span class="annotation" id="annotation_8">
+                悬停效果
+                <span class="annotation-popup">
+                    注卡采用智能定位系统，自动避开屏幕边缘
+                    <a href="#annotation_8" class="back-to-source">↩ 跳回原文</a>
+                </span>
+            </span>
+        </span>
+         经过精心优化</p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-列表与组织结构">
+            <h2 class="card-title">列表与组织结构</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label info">
+                <span class="label-symbol">i</span>
+                <div class="label-contents">
+                    <span class="label-content">内容编排</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">无序列表</div>
+            <div class="region-content">
+                <div class="content">
+                    <ul class="region-list"><li>第一级项目</li><li>回到第一级</li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">有序列表</div>
+            <div class="region-content">
+                <div class="content">
+                    <ol class="region-list"><li>第一步操作</li><li>第二步操作</li><li>第三步操作</li></ol>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-实战编写指南">
+            <h2 class="card-title">实战编写指南</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label info">
+                <span class="label-symbol">i</span>
+                <div class="label-contents">
+                    <span class="label-content">实用技巧</span>
+                </div>
+            </div>
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">最佳实践</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">文件创建流程</div>
+            <div class="region-content">
+                <div class="content">
+                    <ol class="region-list"><li>新建文本文件，写入RemUp语法内容</li><li>将文件后缀改为<code class='inline-code'>.remup</code></li><li>使用编译器生成HTML文件</li><li>在浏览器中查看效果</li></ol>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">推荐编写工具</div>
+            <div class="region-content">
+                <div class="content">
+                    <ul class="region-list"><li><strong>VSCode</strong>：提供语法高亮和代码提示</li><li><strong>记事本<span style="font-size: 1.2em; display: inline-block;"></span></strong>：轻量级文本编辑器</li><li><strong>在线编辑器</strong>：支持实时预览的Web工具</li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">内容组织建议</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><strong>归档设计</strong>：按知识领域或学习阶段划分</p>
+<p><strong>卡片规划</strong>：每个核心概念单独成卡</p>
+<p><strong>区域安排</strong>：逻辑清晰的内容分组<span class="inline-explanation">避免单个区域内容过长</span></p>
+<p> 
+        <span class="annotation-container">
+            <span class="annotation" id="annotation_9">
+                内容组织
+                <span class="annotation-popup">
+                    良好的结构是有效学习的基础
+                    <a href="#annotation_9" class="back-to-source">↩ 跳回原文</a>
+                </span>
+            </span>
+        </span>
+         至关重要</p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-进阶功能预览">
+            <h2 class="card-title">进阶功能预览</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label info">
+                <span class="label-symbol">i</span>
+                <div class="label-contents">
+                    <span class="label-content">未来规划</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">开发中的功能</div>
+            <div class="region-content">
+                <div class="content">
+                    <ul class="region-list"><li>[ ] <strong>表格支持</strong>：用于数据对比和整理</li><li>[ ] <strong>分层列表</strong>：更复杂的知识结构表达</li><li>[ ] <strong>模板系统</strong>：快速创建标准格式卡片</li><li>[ ] <strong>导出功能</strong>：支持PDF、Anki等多种格式</li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">社区贡献</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>欢迎到<a href="https://github.com/MingShuo-S/PPL_Project-RemUp">GitHub仓库</a>参与项目开发<span class="inline-explanation">提交问题反馈或功能建议</span></p>
+<p> 
+        <span class="annotation-container">
+            <span class="annotation" id="annotation_10">
+                社区参与
+                <span class="annotation-popup">
+                    开源项目的发展离不开用户的反馈和贡献
+                    <a href="#annotation_10" class="back-to-source">↩ 跳回原文</a>
+                </span>
+            </span>
+        </span>
+         是项目进步的动力</p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-重要提示点击标签可跳转">
+            <h2 class="card-title">重要提示>>点击标签可跳转</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label default">
+                <span class="label-symbol">s</span>
+                <div class="label-contents">
+                    <span class="label-content">欢迎使用RemUp</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">归档系统提示</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>下面的内容就是归档系统，您可以直接点击对应的按钮jump到对应的归档内容。</p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+                </div>
+            </section>
+            
+
+            <section class="archive-section">
+                <h2 class="archive-title">部分功能卡片展示</h2>
+                <div class="archive-cards">
+            
+                </div>
+            </section>
+            
+
+            <section class="archive-section">
+                <h2 class="archive-title">Q&A</h2>
+                <div class="archive-cards">
+            
+        <div class="card" id="card-what-is-remup">
+            <h2 class="card-title">What is RemUp?</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label info">
+                <span class="label-symbol">i</span>
+                <div class="label-contents">
+                    <span class="label-content">essential</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">第一组问题</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><span style="font-size: 1.5em; display: inline-block;">Q: <strong>what is RemUp?</strong></span></p>
+<p><span style="font-size: 1.2em; display: inline-block;">A: <mark>RemUp</mark> is a <strong>programming language</strong> and a compiler that can be used to create websites and web applications. It is a high-level language that is easy to learn and use, and it is designed to be easy to read and understand. RemUp is a powerful tool for creating websites and web applications quickly and easily.</span></p>
+<p><span style="font-size: 1.5em; display: inline-block;">Q: <strong>what is the purpose of RemUp?</strong></span></p>
+<p><span style="font-size: 1.2em; display: inline-block;">A: The purpose of RemUp is to make it easier for developers to create websites and web applications. RemUp provides a simple and easy-to-use language that is easy to learn and use. It is designed to be easy to read and understand, which makes it a powerful tool for creating websites and web applications quickly and easily.</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">第二组问题</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><span style="font-size: 1.5em; display: inline-block;">Q: <strong>what are the advantages of using RemUp?</strong></span></p>
+<p><span style="font-size: 1.2em; display: inline-block;">A: The advantages of using RemUp are that it is easy to learn and use, it is designed to be easy to read and understand, and it is a powerful tool for creating websites and web applications quickly and easily.</span></p>
+<p><span style="font-size: 1.5em; display: inline-block;">Q: <strong>what are the disadvantages of using RemUp?</strong></span></p>
+<p><span style="font-size: 1.2em; display: inline-block;">A: The disadvantages of using RemUp are that it can be a bit complex to learn and use, and it can be a bit difficult to read and understand. It can be a bit time-consuming to create websites and web applications using RemUp.</span></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+                </div>
+            </section>
+            
+
+            <section class="archive-section">
+                <h2 class="archive-title">学术研究</h2>
+                <div class="archive-cards">
+            
+        <div class="card" id="card-systematic-literature-review">
+            <h2 class="card-title">Systematic Literature Review</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label info">
+                <span class="label-symbol">i</span>
+                <div class="label-contents">
+                    <span class="label-content">研究方法</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">定义</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>SLR: Systematic Literature Review 系统文献综述</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">相关术语</div>
+            <div class="region-content">
+                <div class="content">
+                    <ul class="region-list"><li>PSs: Primary Studies 原始研究</li><li>RQs: Research Questions 研究问题<span class="inline-explanation">zhihu: 研究问题是指对某一问题的研究，是对某一主题的研究，是对某一问题的研究。</span></li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">特点</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>系统性、全面性的文献回顾方法</p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-prisma">
+            <h2 class="card-title">PRISMA</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label info">
+                <span class="label-symbol">i</span>
+                <div class="label-contents">
+                    <span class="label-content">报告规范</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">定义</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>PRISMA: Preferred Reporting Items for Systematic Reviews and Meta-Analysis</p>
+<p>学术研究中系统综述的重要国际报告规范</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">组成部分</div>
+            <div class="region-content">
+                <div class="content">
+                    <ul class="region-list"><li>27个条目的检查清单（PRISMA Checklist）</li><li>文献筛选流程图（PRISMA Flow Diagram）</li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">用途</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>确保论文包含所有必要信息，如研究背景、方法、结果等</p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+                </div>
+            </section>
+            
+
+            <section class="archive-section">
+                <h2 class="archive-title">写作提升</h2>
+                <div class="archive-cards">
+            
+        <div class="card" id="card-vigilant">
+            <h2 class="card-title">vigilant</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label reference">
+                <span class="label-symbol">></span>
+                <div class="label-contents">
+                    <span class="label-content">careful</span>, <span class="label-content">watchful</span>, <span class="label-content">近义词</span>
+                </div>
+            </div>
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">重点词汇</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">解释</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>adj. 警惕的；警觉的；戒备的</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">词组</div>
+            <div class="region-content">
+                <div class="content">
+                    <ul class="region-list"><li>be vigilant about/against/over<span class="inline-explanation">对…保持警惕</span></li><li>remain/stay vigilant<span class="inline-explanation">保持警惕</span></li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">例句</div>
+            <div class="region-content">
+                <div class="content">
+                    <ul class="region-list"><li>Citizens are urged to remain vigilant against 
+        <span class="annotation-container">
+            <span class="annotation" id="annotation_11">
+                网络诈骗
+                <span class="annotation-popup">
+                    指通过互联网进行的欺诈行为
+                    <a href="#annotation_11" class="back-to-source">↩ 跳回原文</a>
+                </span>
+            </span>
+        </span>
+         。<span class="inline-explanation">敦促公民对网络诈骗保持警惕</span></li></ul>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-leverage">
+            <h2 class="card-title">leverage</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label reference">
+                <span class="label-symbol">></span>
+                <div class="label-contents">
+                    <span class="label-content">utilize</span>, <span class="label-content">exploit</span>, <span class="label-content">近义词</span>
+                </div>
+            </div>
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">高频词汇</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">解释</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>v. 利用；使发挥最大作用</p>
+<p>n. 影响力；杠杆作用</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">特点</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>比use和utilize更主动、更高效，常用于商业和学术语境</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">例句</div>
+            <div class="region-content">
+                <div class="content">
+                    <ul class="region-list"><li>Companies need to leverage their resources effectively.<span class="inline-explanation">公司需要有效利用资源。</span></li></ul>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+                </div>
+            </section>
+            
+            </main>
+            
+        <section class="vibe-archive">
+            <h2 class="vibe-archive-title">注卡归档</h2>
+            <div class="vibe-archive-cards">
+                
+        <div class="vibe-archive-card">
+            <h3>文本格式化功能</h3>
+            <div class="vibe-archive-content">
+                
+                    <div class="vibe-archive-item">
+                        <a href="#annotation_1" class="vibe-link">注卡批注</a>
+                        <p>将鼠标悬停在灰色文字上查看详细说明</p>
+                    </div>
+                    
+            </div>
+        </div>
+        
+        <div class="vibe-archive-card">
+            <h3>标签系统详解</h3>
+            <div class="vibe-archive-content">
+                
+                    <div class="vibe-archive-item">
+                        <a href="#annotation_2" class="vibe-link">标签跳转</a>
+                        <p>实现知识点之间的快速导航，构建知识网络</p>
+                    </div>
+                    
+            </div>
+        </div>
+        
+        <div class="vibe-archive-card">
+            <h3>注卡交互系统</h3>
+            <div class="vibe-archive-content">
+                
+                    <div class="vibe-archive-item">
+                        <a href="#annotation_4" class="vibe-link">蓝色背景的文字</a>
+                        <p>这里会显示详细的批注说明</p>
+                    </div>
+                    
+                    <div class="vibe-archive-item">
+                        <a href="#annotation_5" class="vibe-link">Python</a>
+                        <p>一种流行的编程语言，以简洁易读著称</p>
+                    </div>
+                    
+                    <div class="vibe-archive-item">
+                        <a href="#annotation_6" class="vibe-link">机器学习</a>
+                        <p>让计算机从数据中学习模式而不直接编程</p>
+                    </div>
+                    
+                    <div class="vibe-archive-item">
+                        <a href="#annotation_7" class="vibe-link">编译</a>
+                        <p>将源代码转换为可执行文件的过程</p>
+                    </div>
+                    
+                    <div class="vibe-archive-item">
+                        <a href="#annotation_8" class="vibe-link">悬停效果</a>
+                        <p>注卡采用智能定位系统，自动避开屏幕边缘</p>
+                    </div>
+                    
+            </div>
+        </div>
+        
+        <div class="vibe-archive-card">
+            <h3>实战编写指南</h3>
+            <div class="vibe-archive-content">
+                
+                    <div class="vibe-archive-item">
+                        <a href="#annotation_9" class="vibe-link">内容组织</a>
+                        <p>良好的结构是有效学习的基础</p>
+                    </div>
+                    
+            </div>
+        </div>
+        
+        <div class="vibe-archive-card">
+            <h3>进阶功能预览</h3>
+            <div class="vibe-archive-content">
+                
+                    <div class="vibe-archive-item">
+                        <a href="#annotation_10" class="vibe-link">社区参与</a>
+                        <p>开源项目的发展离不开用户的反馈和贡献</p>
+                    </div>
+                    
+            </div>
+        </div>
+        
+        <div class="vibe-archive-card">
+            <h3>vigilant</h3>
+            <div class="vibe-archive-content">
+                
+                    <div class="vibe-archive-item">
+                        <a href="#annotation_11" class="vibe-link">网络诈骗</a>
+                        <p>指通过互联网进行的欺诈行为</p>
+                    </div>
+                    
+            </div>
+        </div>
+        
+            </div>
+        </section>
+        
+            <nav class="other-archives">
+                
+            <section class="archives-nav">
+                <h2 class="archive-title">归档导航</h2>
+                
+            <div class="archive-section">
+                <h3 class="archive-title">用前提示</h3>
+                <div class="archive-cards">
+                    <a href="#card-tips" class="archive-card-link">tips</a>
+                </div>
+            </div>
+            
+            <div class="archive-section">
+                <h3 class="archive-title">RemUp功能展示</h3>
+                <div class="archive-cards">
+                    <a href="#card-欢迎使用remup" class="archive-card-link">欢迎使用RemUp</a><a href="#card-文本格式化功能" class="archive-card-link">文本格式化功能</a><a href="#card-标签系统详解" class="archive-card-link">标签系统详解</a><a href="#card-注卡交互系统" class="archive-card-link">注卡交互系统</a><a href="#card-列表与组织结构" class="archive-card-link">列表与组织结构</a><a href="#card-实战编写指南" class="archive-card-link">实战编写指南</a><a href="#card-进阶功能预览" class="archive-card-link">进阶功能预览</a><a href="#card-重要提示点击标签可跳转" class="archive-card-link">重要提示>>点击标签可跳转</a>
+                </div>
+            </div>
+            
+            <div class="archive-section">
+                <h3 class="archive-title">部分功能卡片展示</h3>
+                <div class="archive-cards">
+                    
+                </div>
+            </div>
+            
+            <div class="archive-section">
+                <h3 class="archive-title">Q&A</h3>
+                <div class="archive-cards">
+                    <a href="#card-what-is-remup" class="archive-card-link">What is RemUp?</a>
+                </div>
+            </div>
+            
+            <div class="archive-section">
+                <h3 class="archive-title">学术研究</h3>
+                <div class="archive-cards">
+                    <a href="#card-systematic-literature-review" class="archive-card-link">Systematic Literature Review</a><a href="#card-prisma" class="archive-card-link">PRISMA</a>
+                </div>
+            </div>
+            
+            <div class="archive-section">
+                <h3 class="archive-title">写作提升</h3>
+                <div class="archive-cards">
+                    <a href="#card-vigilant" class="archive-card-link">vigilant</a><a href="#card-leverage" class="archive-card-link">leverage</a>
+                </div>
+            </div>
+            
+            </section>
+            
+            </nav>
+        </div>
+        <script>
+        // 只需要处理主题切换和基础跳转功能
+        function changeTheme(themeName) {
+            const stylesheet = document.getElementById('mainStylesheet');
+            if (stylesheet) {
+                stylesheet.href = `static/css/${themeName}.css`;
+                localStorage.setItem('preferredTheme', themeName);
+            }
+        }
+
+        // 平滑滚动功能
+        function setupSmoothScroll() {
+            // 为所有内部链接添加平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'center' 
+                        });
+                    }
+                });
+            });
+        }
+
+        // 响应式布局调整
+        function adjustGridLayout() {
+            const width = window.innerWidth;
+            let layout = '1fr';
+            
+            if (width >= 1200) layout = 'repeat(auto-fit, minmax(500px, 1fr))';
+            else if (width >= 1024) layout = 'repeat(auto-fit, minmax(450px, 1fr))';
+            else if (width >= 768) layout = 'repeat(auto-fit, minmax(400px, 1fr))';
+            
+            document.querySelectorAll('.archive-cards').forEach(container => {
+                container.style.gridTemplateColumns = layout;
+            });
+        }
+
+        // 页面加载初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            // 主题初始化
+            const savedTheme = localStorage.getItem('preferredTheme');
+            const selector = document.getElementById('themeSelector');
+            if (savedTheme && selector) {
+                selector.value = savedTheme;
+                changeTheme(savedTheme);
+            }
+
+            // 设置平滑滚动
+            setupSmoothScroll();
+            
+            // 响应式布局
+            adjustGridLayout();
+            window.addEventListener('resize', adjustGridLayout);
+
+            // 锚点跳转
+            if (window.location.hash) {
+                const target = document.querySelector(window.location.hash);
+                if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 100);
+            }
+        });
+        </script>
+    </body>
+    </html>

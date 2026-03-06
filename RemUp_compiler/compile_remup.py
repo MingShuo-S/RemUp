@@ -59,6 +59,9 @@ def get_available_themes(project_root: Path):
 def compile_remup_file(file_path, theme="RemStyle", page_title=None):
     """编译单个 .remup 文件 - 修复参数错误"""
     try:
+        if page_title is None:  # 添加默认标题
+            page_title = os.path.splitext(file_path.name)[0]
+
         abs_file_path = file_path.resolve()
         print(f"🔨 编译文件: {abs_file_path.name}")
         print(f"🎨 使用主题: {theme}")

@@ -159,9 +159,6 @@ class HTMLGenerator:
         html_title = self._generate_page_title(document.title, page_title)
         print(f"页面标题: {html_title}")
         
-        # 复制CSS文件到输出目录
-        css_filename = self._copy_theme_css(theme, output_path.parent)
-        
         # 收集所有卡片主题
         self._collect_card_themes(document)
         
@@ -183,7 +180,7 @@ class HTMLGenerator:
             main_content,
             vibe_archive_content,
             other_archives_content,
-            css_filename,
+            theme,
             theme_selector
         )
         
@@ -193,9 +190,6 @@ class HTMLGenerator:
         
         print(f"HTML生成完成: {output_path} (主题: {theme})")
         return str(output_path)
-    
-    def _copy_theme_css(self, theme: str, output_dir: Path) -> str:
-        pass
     
     def _generate_theme_selector(self, current_theme: str) -> str:
         """生成主题选择器HTML"""
@@ -334,7 +328,7 @@ class HTMLGenerator:
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{safe_title}</title>
-        <link rel="stylesheet" href="{css_filename}" id="mainStylesheet">
+        <link rel="stylesheet" href="static/css/{css_filename}.css" id="mainStylesheet">
     </head>
     <body>
         <div class="container">

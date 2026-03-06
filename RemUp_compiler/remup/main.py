@@ -144,7 +144,9 @@ def _handle_build_command(args):
     
     try:
         compiler = Compiler()
-        
+        if args.title is None:
+            args.title = input_path.stem
+            
         # 编译目录
         if args.directory or input_path.is_dir():
             print(f"📁 编译目录: {input_path}")
