@@ -1,0 +1,87 @@
+{
+  "Archive - Markdown Style": {
+    "prefix": "#archive",
+    "body": "# ${1:归档名称}\n\n${0}",
+    "description": "创建 Markdown 风格的归档标记"
+  },
+  "Card - Markdown Style": {
+    "prefix": "##card",
+    "body": "## ${1:卡片主题}\n(${2:!：重要}) (${3:>：#参考})\n\n### ${4:区域名}\n${5:内容}\n\n${0}",
+    "description": "创建 Markdown 风格的卡片"
+  },
+  "Region - Markdown Style": {
+    "prefix": "###region",
+    "body": "### ${1:区域名}\n${0}",
+    "description": "创建 Markdown 风格的区域标记"
+  },
+  "Sub Card - Markdown Style": {
+    "prefix": "####subcard",
+    "body": "#### ${1:次级卡片主题}\n${0}",
+    "description": "创建 Markdown 风格的次级卡片"
+  },
+  "Traditional Archive": {
+    "prefix": "--archive",
+    "body": "--<${1:归档名称}>--\n\n${0}",
+    "description": "创建传统风格的归档标记"
+  },
+  "Traditional Card": {
+    "prefix": "<+card",
+    "body": "<+${1:卡片主题}\n(${2:!：重要}) (${3:>：#参考})\n\n---${4:区域名}\n${5:内容}\n\n/+>",
+    "description": "创建传统风格的卡片"
+  },
+  "Traditional Region": {
+    "prefix": "---region",
+    "body": "---${1:区域名}\n${0}",
+    "description": "创建传统风格的区域标记"
+  },
+  "Vibe Card - Traditional": {
+    "prefix": "vibe",
+    "body": "`${1:内容}`[${2:批注}]",
+    "description": "创建传统注卡语法"
+  },
+  "Vibe Card - Markdown": {
+    "prefix": "[vibe",
+    "body": "[${1:内容}|${2:批注}]",
+    "description": "创建 Markdown 注卡语法"
+  },
+  "Inline Explanation - Traditional": {
+    "prefix": ">>exp",
+    "body": ">>${1:解释内容}",
+    "description": "创建传统行内解释"
+  },
+  "Inline Explanation - Markdown": {
+    "prefix": "^exp",
+    "body": "^${1:解释内容}",
+    "description": "创建 Markdown 行内解释"
+  },
+  "Label - Important": {
+    "prefix": "!label",
+    "body": "(!: ${1:内容})",
+    "description": "创建重要标签"
+  },
+  "Label - Reference": {
+    "prefix": ">label",
+    "body": "(>: #${1:目标})",
+    "description": "创建参考链接标签"
+  },
+  "Label - Rating": {
+    "prefix": "*label",
+    "body": "(*: ${1:⭐⭐⭐})",
+    "description": "创建评级标签"
+  },
+  "Code Block": {
+    "prefix": "```",
+    "body": "```${1:language}\n${2:代码内容}\n```",
+    "description": "创建代码块"
+  },
+  "Complete Card Template": {
+    "prefix": "fullcard",
+    "body": "# ${1:归档名称}\n\n## ${2:卡片主题}\n(!: ${3:重点说明}) (>: #${4:相关卡片}) (*: ${5:⭐⭐⭐})\n\n### ${6:基本概念}\n${7:概念描述 ^简短解释}\n\n### ${8:示例}\n- 示例 1 `${9:术语}`[${10:批注说明}]\n- 示例 2\n\n### ${11:应用场景}\n${12:实际应用说明}\n\n/+>",
+    "description": "完整的卡片模板"
+  },
+  "Note Template": {
+    "prefix": "note",
+    "body": "# ${1:课程/主题名称}\n\n(!: ${2:重点复习}) (*: ${3:⭐⭐⭐})\n\n## ${4:核心概念 1}\n(!: ${5:基础})\n\n### ${6:定义}\n${7:关键概念的定义}\n\n### ${8:示例}\n- `${9:术语}`[${10:简单说明}] ^${11:关键词}\n\n## ${12:核心概念 2}\n(!: ${13:进阶}) (前置:#${14:核心概念 1})\n\n### ${15:应用场景}\n${16:实际使用场景 ^加深理解}\n\n/+>",
+    "description": "完整的学习笔记模板"
+  }
+}

@@ -1,25 +1,50 @@
 {
   "name": "RemUp",
   "displayName": "RemUp Syntax Highlighting",
-  "description": "a markup language to empower note system on PC",
-  "version": "0.0.1",
+  "description": "RemUp 标记语言语法高亮 - 构建'学习 - 理解 - 再学习'的记忆闭环",
+  "version": "1.0.0",
+  "publisher": "MingShuo-S",
   "engines": {
     "vscode": "^1.108.1"
   },
   "categories": [
-    "Programming Languages"
+    "Programming Languages",
+    "Other"
   ],
+  "keywords": [
+    "RemUp",
+    "markup language",
+    "note-taking",
+    "learning",
+    "knowledge management",
+    "markdown"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MingShuo-S/PPL_Project-RemUp.git"
+  },
+  "icon": "images/icon.png",
   "contributes": {
     "languages": [{
       "id": "remup",
       "aliases": ["RemUp", "remup"],
-      "extensions": [".remup .ru"],
-      "configuration": "./language-configuration.json"
+      "extensions": [".remup", ".ru"],
+      "configuration": "./language-configuration.json",
+      "icon": {
+        "light": "images/icon-light.svg",
+        "dark": "images/icon-dark.svg"
+      }
     }],
     "grammars": [{
       "language": "remup",
-      "scopeName": "source.remup source.ru",
+      "scopeName": "source.remup",
       "path": "./syntaxes/remup.tmLanguage.json"
-    }]
+    }],
+    "snippets": [
+      {
+        "language": "remup",
+        "path": "./snippets/remup-snippets.json"
+      }
+    ]
   }
 }

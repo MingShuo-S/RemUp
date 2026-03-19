@@ -1,9 +1,77 @@
-# Change Log
+# 更新日志
 
-All notable changes to the "RemUp" extension will be documented in this file.
+本文件记录 RemUp VSCode 扩展的所有重要更新。
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## [1.0.0] - 2026-03-19
 
-## [Unreleased]
+### ✨ 新增功能
 
-- Initial release
+#### 双语法支持
+- ✅ 完整支持 Markdown 风格语法（`#`, `##`, `###`, `####`）
+- ✅ 完整支持传统语法（`--<`, `<+`, `---`, `/+>`）
+- ✅ 自动识别两种语法模式并正确高亮
+
+#### 语法高亮增强
+- 🏷️ 标签系统高亮优化（支持中英文冒号）
+- 💬 注卡语法高亮（传统 `` `内容`[批注] `` 和 Markdown `[内容 | 批注]`）
+- 📝 行内解释高亮（传统 `>>` 和 Markdown `^`）
+- 🎯 次级卡片 `####` 高亮支持
+
+#### 智能编辑功能
+- 🔄 自动括号闭合（`<+` → `/+>`，`` ` `` → `` ` ``）
+- 📦 代码块自动闭合（`\`\`\``）
+- 🗂️ 语法折叠支持（按归档、卡片、区域层级折叠）
+- ⚡ 50+ 个代码片段模板
+
+#### 代码片段库
+- `#archive`, `##card`, `###region`, `####subcard` - Markdown 结构
+- `--archive`, `<+card`, `---region` - 传统结构
+- `vibe`, `[vibe` - 注卡快捷输入
+- `>>exp`, `^exp` - 解释快捷输入
+- `!label`, `>label`, `*label` - 标签快捷输入
+- `fullcard`, `note` - 完整模板
+
+### 🔧 技术改进
+- 📄 修复 file extensions 配置（`.remup` 和 `.ru` 分开配置）
+- 🎨 优化语言配置文件（注释、括号、折叠规则）
+- 📚 完善 package.json 元数据（关键词、仓库链接、分类）
+- 🏷️ 统一 scopeName 为 `source.remup`
+
+### 📖 文档更新
+- 📝 完整的 README 文档（中英双语支持）
+- 📋 详细的使用说明和示例
+- 🎮 代码片段使用指南
+- 🔧 故障排除章节
+
+### 🐛 Bug 修复
+- 修复了标签正则表达式不支持中文冒号的问题
+- 修复了卡片结束检测逻辑
+- 修复了代码块嵌套处理问题
+
+---
+
+## [0.0.1] - 初始版本
+
+### 基础功能
+- ✅ 基础语法高亮支持
+- ✅ 传统语法支持
+- ✅ 基本语言配置
+
+---
+
+## 未来计划
+
+### v1.1.0 计划
+- [ ] 添加 Intellisense 支持（标签自动补全）
+- [ ] 添加卡片引用跳转功能
+- [ ] 添加实时预览窗口
+- [ ] 添加自定义主题支持
+
+### v1.2.0 计划
+- [ ] 集成编译功能（直接在 VSCode 中编译 HTML）
+- [ ] 添加批量编译支持
+- [ ] 添加输出预览面板
+
+---
+
+**Enjoy RemUp in VSCode!** 🚀

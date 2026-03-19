@@ -1,65 +1,263 @@
-# RemUp README
+<div align="center">
 
-This is the README for your extension "RemUp". After writing up a brief description, we recommend including the following sections.
+# RemUp - VSCode 语法高亮扩展
 
-## Features
+**为 RemUp 标记语言提供完整的语法高亮和智能提示支持**
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-For example if there is an image subfolder under your extension project workspace:
+</div>
 
-\!\[feature X\]\(images/feature-x.png\)
+## 📖 功能特性
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+本扩展为 RemUp 标记语言提供全面的 VSCode 支持，包括：
 
-## Requirements
+### ✨ 核心功能
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- **🎨 双语法高亮支持**
+  - ✅ 传统语法（`--<归档>--`, `<+卡片`, `---区域`）
+  - ✅ Markdown 风格语法（`# 归档`, `## 卡片`, `### 区域`, `#### 次级卡片`）
+  
+- **🏷️ 标签系统高亮**
+  - `(!: 内容)` - 重要标签（红色）
+  - `(>: #目标)` - 参考链接（蓝色）
+  - `(*: ⭐⭐⭐)` - 评级标签（星级）
+  - `(备注：说明)` - 普通备注（灰色）
 
-## Extension Settings
+- **💬 交互式元素**
+  - 传统注卡：`` `内容`[批注] ``
+  - Markdown 注卡：`[内容 | 批注]`
+  - 传统解释：`>>解释文字`
+  - Markdown 解释：`^解释文字`
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+- **🚀 智能编辑功能**
+  - 自动括号闭合（`<+` → `/+>`）
+  - 代码块自动闭合（`\`\`\``）
+  - 语法折叠支持
+  - 丰富的代码片段模板
 
-For example:
+## 🎯 快速开始
 
-This extension contributes the following settings:
+### 安装
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+1. 打开 VSCode
+2. 按 `Ctrl+Shift+X` 打开扩展面板
+3. 搜索 "RemUp"
+4. 点击安装
 
-## Known Issues
+### 使用方法
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+1. 创建 `.remup` 或 `.ru` 文件
+2. 开始编写 RemUp 标记语言
+3. 享受完整的语法高亮和智能提示！
 
-## Release Notes
+## 📝 语法示例
 
-Users appreciate release notes as you update your extension.
+### Markdown 风格（推荐新手）
 
-### 1.0.0
+```remup
+# 学习笔记
 
-Initial release of ...
+## Python 基础
+(!: 重点) (>: #进阶)
 
-### 1.0.1
+### 变量
+`变量`[存储数据的容器] ^编程概念
 
-Fixed issue #.
+### 函数
+def greet(name): ^定义函数
+    return f"Hello, {name}"
 
-### 1.1.0
+/+>
+```
 
-Added features X, Y, and Z.
+### 传统风格
+
+```remup
+--<编程学习>--
+
+<+python_functions
+(!: 基础概念) (>: #variable)
+
+---定义
+`函数`[完成特定功能的可重用代码块] >>编程基础
+是组织代码的基本单元。
+
+---语法
+```python
+def greet(name: str) -> str:
+   return f"Hello, {name}!"
+```
+
+/+>
+```
+
+## 🎮 代码片段（Snippets）
+
+输入前缀即可快速生成语法结构：
+
+| 前缀 | 描述 | 生成内容 |
+|------|------|----------|
+| `#archive` | Markdown 归档 | `# 归档名称` |
+| `##card` | Markdown 卡片 | `## 卡片主题` + 完整结构 |
+| `###region` | Markdown 区域 | `### 区域名` |
+| `####subcard` | Markdown 次级卡片 | `#### 主题` |
+| `--archive` | 传统归档 | `--<名称>--` |
+| `<+card` | 传统卡片 | `<+主题 ... /+>` |
+| `---region` | 传统区域 | `---区域名` |
+| `vibe` | 传统注卡 | `` `内容 `[批注] `` |
+| `[vibe` | Markdown 注卡 | `[内容 \| 批注]` |
+| `>>exp` | 传统解释 | `>>解释` |
+| `^exp` | Markdown 解释 | `^解释` |
+| `!label` | 重要标签 | `(!: 内容)` |
+| `>label` | 参考标签 | `(>: #目标)` |
+| `` ``` `` | 代码块 | `\`\`\`language ...\`\`\`` |
+| `fullcard` | 完整卡片模板 | 包含所有元素的完整卡片 |
+| `note` | 笔记模板 | 完整的学习笔记结构 |
+
+### 使用示例
+
+输入 `##card` 然后按 `Tab` 键：
+
+```remup
+## 卡片主题
+(!: 重要) (>: #参考)
+
+### 区域名
+内容
+
+```
+
+输入 `fullcard` 然后按 `Tab` 键：
+
+```remup
+# 归档名称
+
+## 卡片主题
+(!: 重点说明) (>: #相关卡片) (*: ⭐⭐⭐)
+
+### 基本概念
+概念描述 ^简短解释
+
+### 示例
+- 示例 1 `术语`[批注说明]
+- 示例 2
+
+### 应用场景
+实际应用说明
+
+/+>
+```
+
+## 🛠️ 配置说明
+
+### 文件扩展名
+
+本扩展支持以下文件扩展名：
+- `.remup`（主扩展名）
+- `.ru`（简写扩展名）
+
+### 语言模式
+
+当打开 `.remup` 或 `.ru` 文件时，VSCode 会自动启用 RemUp 语法高亮。
+
+如需手动设置：
+1. 点击右下角语言模式
+2. 选择 "RemUp"
+
+### 快捷键
+
+- `Ctrl+Space` - 触发代码片段建议
+- `Ctrl+K Ctrl+F` - 折叠当前卡片/区域
+- `Ctrl+K Ctrl+J` - 展开所有折叠
+
+## 🎨 语法高亮颜色
+
+不同语法元素使用不同颜色区分：
+
+- **归档标题** - 醒目的主色调
+- **卡片标题** - 二级颜色
+- **区域标题** - 三级颜色
+- **标签** - 根据类型着色（重要=红色，链接=蓝色）
+- **注卡** - 特殊样式突出显示
+- **代码块** - 嵌入代码高亮
+
+## ⚙️ 高级功能
+
+### 自动闭合
+
+输入以下符号会自动添加闭合标签：
+
+- 输入 `<+` 自动添加 `/+>`
+- 输入 `` ` `` 自动添加配对的 `` ` ``
+- 输入 `(` 自动添加 `)`
+- 输入 `[` 自动添加 `]`
+- 输入 `\`\`\`` 自动添加结束的代码块标记
+
+### 语法折叠
+
+支持按层级折叠：
+
+- 折叠整个归档（`#` 或 `--<`）
+- 折叠单个卡片（`##` 或 `<+`）
+- 折叠区域（`###` 或 `---`）
+
+### 注释支持
+
+使用 `#` 开头添加行注释（仅在 Markdown 风格中有效）：
+
+```remup
+# 这是一个注释
+## 卡片主题
+# 另一个注释
+```
+
+## 🔧 故障排除
+
+### 语法高亮不工作？
+
+1. 确认文件扩展名为 `.remup` 或 `.ru`
+2. 检查右下角语言模式是否为 "RemUp"
+3. 重启 VSCode
+
+### 代码片段不显示？
+
+1. 确保在 `.remup` 或 `.ru` 文件中
+2. 按 `Ctrl+Space` 手动触发建议
+3. 检查是否安装了其他冲突的扩展
+
+### 自动闭合无效？
+
+检查 VSCode 设置中的 `editor.autoClosingBrackets` 是否启用
+
+## 📚 学习资源
+
+- [RemUp 官方文档](https://github.com/MingShuo-S/PPL_Project-RemUp)
+- [语法速查表](../../RemUp_compiler/QUICK_REFERENCE.md)
+- [示例文件](../../RemUp_compiler/examples/)
+
+## 🤝 贡献与反馈
+
+欢迎提交问题和改进建议！
+
+- **问题反馈**: [GitHub Issues](https://github.com/MingShuo-S/PPL_Project-RemUp/issues)
+- **作者邮箱**: 2954809209@qq.com
+
+## 📄 许可证
+
+MIT License - 详见 LICENSE 文件
+
+## 🙏 致谢
+
+感谢所有为 RemUp 项目做出贡献的开发者！
 
 ---
 
-## Working with Markdown
+<div align="center">
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+**享受高效的 RemUp 写作体验！** 🚀
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+如果这个扩展对你有帮助，请给个 ⭐️ 支持一下！
 
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+</div>
