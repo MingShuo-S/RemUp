@@ -29,7 +29,7 @@ class Parser:
             self.current_token = None
 
     def parse(self) -> Document:
-        """解析整个文档"""
+        """解析整个文档 - 极简语法逻辑"""
         archives = []
         
         # 自动生成标题
@@ -38,16 +38,24 @@ class Parser:
         else:
             title = self.source_name
         
+        # 解析状态跟踪
+        current_default_card = None
+        current_explicit_card = None  # 当前显式卡片（## 创建的）
+        
         # 解析文档内容
         while self.current_token:
             token_type, token_value, _ = self.current_token
             
             if token_type == 'ARCHIVE':
+                # 新归档开始 → 结束之前的所有卡片
                 archive = self.parse_archive()
                 if archive:
                     archives.append(archive)
                     self.current_archive = archive
+                    current_default_card = None
+                    current_explicit_card = None  # 重置所有卡片状态
             elif token_type == 'CARD_START':
+                # 新卡片开始 → 结束上一张卡片
                 card = self.parse_card()
                 if card:
                     # 确保卡片有归属的归档
@@ -55,9 +63,33 @@ class Parser:
                         default_archive = Archive("Default", [])
                         archives.append(default_archive)
                         self.current_archive = default_archive
+                    
                     self.current_archive.cards.append(card)
+                    current_explicit_card = card  # 记录当前显式卡片
+                    current_default_card = None  # 有显式卡片时，默认卡片无效
+                    self.current_card = card  # 更新当前卡片引用
+            elif token_type == 'REGION' and self.current_archive:
+                # 在归档下直接遇到区域，创建默认卡片
+                if current_explicit_card is None and current_default_card is None:
+                    current_default_card = MainCard("默认卡片", [], [])
+                    self.current_archive.cards.append(current_default_card)
+                
+                if current_default_card:
+                    self.current_card = current_default_card
+                    region = self.parse_region()
+                    if region:
+                        current_default_card.regions.append(region)
+            elif token_type == 'CARD_END':
+                # 传统语法结束标记
+                # 如果有默认卡片，结束它；否则只是消费掉这个标记
+                if current_default_card:
+                    current_default_card = None  # 结束默认卡片
+                self.advance()  # 消费结束标记
             else:
                 self.advance()
+        
+        # 文件结尾 → 自动结束所有未结束的卡片
+        # （parse_card 方法会在遇到新卡片或文件结尾时自然结束）
         
         # 构建注卡归档
         vibe_archive = self.build_vibe_archive(archives)
@@ -74,11 +106,12 @@ class Parser:
         return Archive(archive_name, [])
     
     def parse_card(self) -> Optional[MainCard]:
-        """解析卡片定义"""
+        """解析卡片定义 - 极简语法，不依赖显式结束标记"""
         if not self.current_token or self.current_token[0] != 'CARD_START':
             return None
         
         theme = self.current_token[1]
+        
         self.advance()
         
         # 解析标签
@@ -88,19 +121,54 @@ class Parser:
         card = MainCard(theme, labels, [])
         self.current_card = card
         
-        # 解析区域
-        while self.current_token and self.current_token[0] != 'CARD_END':
-            if self.current_token[0] == 'REGION':
+        # 智能判断：是否需要显式的 CARD_END
+        while self.current_token:
+            token_type = self.current_token[0]
+            
+            # 极简语法结束条件：遇到新卡片、新归档或文件结尾
+            if token_type in ['CARD_START', 'ARCHIVE']:
+                break
+            
+            # 传统语法结束条件：遇到 CARD_END
+            if token_type == 'CARD_END':
+                self.advance()  # 消费结束标记
+                break
+            
+            # 解析内容
+            if token_type == 'REGION':
                 region = self.parse_region()
                 if region:
                     card.regions.append(region)
+            elif token_type == 'SUB_CARD':
+                # 处理次级卡片（#### 标题）
+                sub_card_theme = self.current_token[1]
+                self.advance()
+                
+                # 创建次级卡片作为一个特殊的区域
+                sub_card_region = Region(sub_card_theme, "", [])
+                
+                # 解析次级卡片的内容（直到下一个标题或卡片结束）
+                while self.current_token and self.current_token[0] not in ['REGION', 'CARD_END', 'SUB_CARD', 'CARD_START', 'ARCHIVE']:
+                    if self.current_token[0] == 'TEXT':
+                        text_content = self.current_token[1]
+                        sub_card_region.lines.append(text_content)
+                        self.advance()
+                    elif self.current_token[0] in ['UNORDERED_LIST_ITEM', 'ORDERED_LIST_ITEM']:
+                        self.parse_list_item(sub_card_region, self.current_token[0])
+                    elif self.current_token[0] == 'VIBE_CARD':
+                        self.parse_vibe_card(sub_card_region)
+                    elif self.current_token[0] == 'INLINE_EXPLANATION':
+                        self.parse_inline_explanation(sub_card_region)
+                    elif self.current_token[0] == 'CODE_BLOCK_START':
+                        self.parse_code_block(sub_card_region)
+                    else:
+                        self.advance()
+                
+                sub_card_region.content = '\n'.join(sub_card_region.lines)
+                card.regions.append(sub_card_region)
             else:
                 self.advance()
         
-        # 消费卡片结束标记
-        if self.current_token and self.current_token[0] == 'CARD_END':
-            self.advance()
-            
         return card
     
     def parse_labels(self) -> List[Label]:
@@ -195,9 +263,8 @@ class Parser:
         self.current_region = region
         
         # 解析区域内容
-        while self.current_token and self.current_token[0] not in ['REGION', 'CARD_END']:
+        while self.current_token and self.current_token[0] not in ['REGION', 'CARD_END', 'CARD_START', 'ARCHIVE']:
             token_type, token_value, _ = self.current_token
-            print(self.current_token)
             if token_type in ['UNORDERED_LIST_ITEM', 'ORDERED_LIST_ITEM']:
                 # 专门处理列表项
                 self.parse_list_item(region, token_type)

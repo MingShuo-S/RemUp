@@ -17,10 +17,10 @@ class Lexer:
         'archive_md': re.compile(r'^\s*#\s+([^#].*?)\s*$'),  # # 归档名
         'card_md': re.compile(r'^\s*##\s+(.+?)\s*$'),  # ## 卡片主题
         'region_md': re.compile(r'^\s*###\s+(.+?)\s*$'),  # ### 区域名
+        'sub_card_md': re.compile(r'^\s*####\s+(.+?)\s*$'),  # #### 次级卡片（新增）
         
         # 标签和注卡
-        'label': re.compile(r'\s*\(([^:]+):\s*([^)]+)\)'),  # 传统：(!: 内容)
-        'label_md': re.compile(r'\[@([^\]]+)\]'),  # 极简：[@重要]
+        'label': re.compile(r'\s*\(([^:：]+)[:：]\s*([^)]+)\)'),  # 传统：(!: 内容) 支持中英文冒号
         'vibe_card': re.compile(r'`([^`\n]+)`\[([^\]]*)\]'),  # 传统：`内容 `[批注]
         'vibe_card_md': re.compile(r'\[([^\[\]\|]+)\s*\|\s*([^\[\]]*)\]'),  # 极简：[内容 | 批注]
         
@@ -115,6 +115,12 @@ class Lexer:
             self.tokens.append(('CARD_END', '', self.current_line_num))
             return
         
+        # 检查次级卡片定义（极简语法，新增）
+        sub_card_md_match = self.PATTERNS['sub_card_md'].match(line)
+        if sub_card_md_match:
+            self.tokens.append(('SUB_CARD', sub_card_md_match.group(1), self.current_line_num))
+            return
+        
         # 检查区域定义（优先匹配极简语法）
         region_md_match = self.PATTERNS['region_md'].match(line)
         if region_md_match:
@@ -130,34 +136,26 @@ class Lexer:
         self._process_inline_elements(line)
     
     def _process_inline_elements(self, line: str):
-        """处理行内的各种元素 - 支持双语法"""
-        # 首先检查是否是标签（传统语法）
-        label_match = self.PATTERNS['label'].match(line)
-        if label_match:
-            symbol = label_match.group(1).strip()
-            content = [c.strip() for c in label_match.group(2).split(',')]
-            self.tokens.append(('LABEL', f"{symbol}:{','.join(content)}", self.current_line_num))
-            return
+        """处理行内的各种元素 - 仅支持传统标签语法"""
+        remaining = line.strip()
         
-        # 检查极简标签
-        label_md_match = self.PATTERNS['label_md'].search(line)
-        if label_md_match:
-            # 转换极简标签为传统格式
-            label_text = label_md_match.group(1).strip()
-            # 解析标签类型和内容
-            if ':' in label_text:
-                parts = label_text.split(':', 1)
-                symbol = parts[0].strip()
-                content = [c.strip() for c in parts[1].split(',')]
-            else:
-                # 默认使用！符号
-                symbol = '!'
-                content = [label_text]
-            self.tokens.append(('LABEL', f"{symbol}:{','.join(content)}", self.current_line_num))
-            return
+        # 循环处理一行中的多个标签
+        while remaining:
+            label_match = self.PATTERNS['label'].match(remaining)
+            if label_match:
+                symbol = label_match.group(1).strip()
+                content = [c.strip() for c in label_match.group(2).split(',')]
+                self.tokens.append(('LABEL', f"{symbol}:{','.join(content)}", self.current_line_num))
+                # 移动到下一个标签
+                remaining = remaining[label_match.end():].strip()
+                continue
+            
+            # 如果没有匹配到标签，退出循环
+            break
         
-        # 处理普通行内容
-        self._process_line_content(line)
+        # 处理剩余的普通行内容
+        if remaining:
+            self._process_line_content(remaining)
 
     def _process_line_content(self, content: str):
         """处理行内容中的各种行内元素 - 支持双语法"""

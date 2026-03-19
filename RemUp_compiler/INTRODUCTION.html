@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>INTRODUCTION</title>
+        <link rel="stylesheet" href="static/css/RemStyle.css" id="mainStylesheet">
+    </head>
+    <body>
+        <div class="container">
+            
+        <div class="theme-selector-container">
+            <label for="themeSelector">主题选择:</label>
+            <select id="themeSelector" onchange="changeTheme(this.value)">
+                <option value="CompactStyle" >CompactStyle</option><option value="DarkTheme" >DarkTheme</option><option value="RemStyle" selected>RemStyle</option>
+            </select>
+        </div>
+        
+            <header class="page-header">
+                <h1 class="page-title">INTRODUCTION</h1>
+            </header>
+            <main class="main-content">
+                
+            <section class="archive-section">
+                <h2 class="archive-title">RemUp - 卡片链接式学习笔记系统</h2>
+                <div class="archive-cards">
+            
+        <div class="card" id="card-remup">
+            <h2 class="card-title">RemUp</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label info">
+                <span class="label-symbol">i</span>
+                <div class="label-contents">
+                    <span class="label-content">重要</span>
+                </div>
+            </div>
+            
+            <div class="label reference">
+                <span class="label-symbol">></span>
+                <div class="label-contents">
+                    <a href="#card-核心定义" class="label-link">核心定义</a>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">核心概念</div>
+            <div class="region-content">
+                <div class="content">
+                    <p> 
+        <span class="annotation-container">
+            <span class="annotation" id="annotation_1">
+                RemUp
+                <span class="annotation-popup">
+                    笔记系统
+                    <a href="#annotation_1" class="back-to-source">↩ 跳回原文</a>
+                </span>
+            </span>
+        </span>
+         是一个基于学习型笔记设计的标记语言，特点是构建易读的网状知识结构，超越思维导图与常规笔记的限制。</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">为什么需要 RemUp</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>你是否遇到过这些学习痛点？</p>
+<p>知识碎片化</p>
+<ul class="region-list"><li>笔记分散在各个文件中<span class="inline-explanation">难以形成体系</span></li><li>知识点之间缺乏关联<span class="inline-explanation">孤立存在</span></li><li>复习时需要手动查找<span class="inline-explanation">效率低下</span></li></ul>
+<p>结构僵化</p>
+<ul class="region-list"><li>树状结构限制了知识组织<span class="inline-explanation">一个知识点只能属于一个分类</span></li><li>跨主题关联困难<span class="inline-explanation">难以建立知识网络</span></li><li>修改结构需要大量调整<span class="inline-explanation">不够灵活</span></li></ul>
+<p>缺乏交互性</p>
+<ul class="region-list"><li>纯文本阅读体验单调<span class="inline-explanation">被动接受信息</span></li><li>重点和解释混在一起<span class="inline-explanation">难以快速抓住核心</span></li><li>无法主动测试理解<span class="inline-explanation">学习效果差</span></li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">RemUp 的解决方案</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>卡片式组织 - 每个知识点独立成卡<span class="inline-explanation">灵活组合</span></p>
+<p>链接式关联 - 标签系统构建知识网络<span class="inline-explanation">打破分类限制</span></p>
+<p>交互式学习 - 注卡系统主动解释<span class="inline-explanation">悬停查看加深理解</span></p>
+<p>智能归档 - 自动汇总注卡和关联<span class="inline-explanation">生成复习材料</span></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+                </div>
+            </section>
+            
+
+            <section class="archive-section">
+                <h2 class="archive-title">RemUp 是什么？</h2>
+                <div class="archive-cards">
+            
+        <div class="card" id="card-核心定义">
+            <h2 class="card-title">核心定义</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">基础概念</span>
+                </div>
+            </div>
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">重要</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">设计理念</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>RemUp 基于学习、理解、再学习的记忆闭环<span class="inline-explanation">三大环节</span></p>
+<p>学习阶段 → 记录知识点</p>
+<p>理解阶段 → 标注和关联</p>
+<p>再学习阶段 → 复习和强化</p>
+<p>最终目标：形成长期记忆<span class="inline-explanation">真正掌握知识</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">核心价值</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>传统笔记 vs RemUp 笔记</p>
+<p>传统笔记是被动的<span class="inline-explanation">记录完就结束</span></p>
+<p>RemUp 笔记是主动的<span class="inline-explanation">记录只是开始</span></p>
+<p>传统笔记是静态的<span class="inline-explanation">内容固定不变</span></p>
+<p>RemUp 笔记是动态的<span class="inline-explanation">可以不断生长</span></p>
+<p>传统笔记是孤立的<span class="inline-explanation">知识点分散</span></p>
+<p>RemUp 笔记是关联的<span class="inline-explanation">形成知识网络</span></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+                </div>
+            </section>
+            
+
+            <section class="archive-section">
+                <h2 class="archive-title">RemUp 的核心特色</h2>
+                <div class="archive-cards">
+            
+        <div class="card" id="card-卡片系统-知识的原子化单元">
+            <h2 class="card-title">🎴 卡片系统 - 知识的原子化单元</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">核心特色</span>
+                </div>
+            </div>
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">重要</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">什么是卡片？</div>
+            <div class="region-content">
+                <div class="content">
+                    <p> 
+        <span class="annotation-container">
+            <span class="annotation" id="annotation_2">
+                卡片
+                <span class="annotation-popup">
+                    独立的知识单元
+                    <a href="#annotation_2" class="back-to-source">↩ 跳回原文</a>
+                </span>
+            </span>
+        </span>
+         是 RemUp 的基本组织单位<span class="inline-explanation">承载一个完整的知识点</span></p>
+<p>每张卡片的特点：</p>
+<ul class="region-list"><li>有明确的主题<span class="inline-explanation">聚焦单一概念</span></li><li>可以独立存在<span class="inline-explanation">自包含的知识块</span></li><li>可以灵活组合<span class="inline-explanation">按需组织</span></li><li>可以相互关联<span class="inline-explanation">形成网络</span></li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">卡片 vs 标题</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>这是 RemUp 与 Markdown 的本质区别<span class="inline-explanation">务必理解</span></p>
+<ul class="region-list"><li>Markdown 的树状结构</li></ul>
+<p><div class='code-block'># Python 编程<br/>  ## 基础语法<br/>    ### 变量<br/>    ### 函数<br/>  ## 高级特性<br/>    ### 装饰器<br/>    ### 元类</div></p>
+<p>问题：一个知识点只能在一个位置<span class="inline-explanation">难以跨分类</span></p>
+<ul class="region-list"><li>RemUp 的网状结构</li></ul>
+<p><div class='code-block'>## 变量 <br/>(&gt;: #数据类型) (&gt;: #环境配置)<br/>(&gt;: #作用域) (&gt;: #常量)<br/><br/>## 函数 <br/>(&gt;: #变量) (*: #装饰器)<br/>(&gt;: #面向对象) (&gt;: #实战项目)<br/><br/>## 装饰器 <br/>(&gt;: #函数) (难度: )<br/>(&gt;: #日志装饰器) (&gt;: #Web 框架)</div></p>
+<p>优势：一张卡片可以有多个关联<span class="inline-explanation">形成知识网络</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">卡片的实际例子</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><div class='code-block'>## 变量<br/>(!: 核心概念) (!: 重要)<br/><br/>### 定义<br/>[变量 | 存储数据的容器] ^编程中最基本的概念<br/><br/>### 特点<br/>- 可变性 - 值可以改变<br/>- 命名规则 - 遵循标识符规范<br/>- 作用域 - 局部或全局<br/><br/>### 相关概念<br/>- @前置:#数据类型<br/>- @后续:#函数<br/>- @对比:#常量<br/>- @应用:#数据结构<br/><br/>### 常见误区<br/>⚠️ 变量名可以使用中文 ^不推荐但合法<br/>⚠️ 变量必须先声明后使用 ^Python 不需要显式声明<br/><br/>### 代码示例<br/>``python<br/>name = &quot;Alice&quot;      # 字符串变量<br/>age = 25           # 整数变量<br/>height = 1.75      # 浮点变量<br/>is_student = True  # 布尔变量<br/>``<br/><br/>### 练习题目<br/>1. 创建三个不同类型的变量<br/>2. 尝试修改变量的值<br/>3. 思考：变量名 123abc 合法吗？为什么？</div></p>
+<p>这张卡片可以：</p>
+<ul class="region-list"><li>独立存在<span class="inline-explanation">完整讲解变量概念</span></li><li>链接到其他卡片<span class="inline-explanation">构建知识网络</span></li><li>被多张卡片引用<span class="inline-explanation">变量的概念贯穿始终</span></li></ul>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-注卡系统-交互式批注">
+            <h2 class="card-title">💡 注卡系统 - 交互式批注</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">核心特色</span>
+                </div>
+            </div>
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">重要</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">什么是注卡？</div>
+            <div class="region-content">
+                <div class="content">
+                    <p> 
+        <span class="annotation-container">
+            <span class="annotation" id="annotation_3">
+                注卡
+                <span class="annotation-popup">
+                    悬停显示的解释内容
+                    <a href="#annotation_3" class="back-to-source">↩ 跳回原文</a>
+                </span>
+            </span>
+        </span>
+         是 RemUp 的核心创新<span class="inline-explanation">让笔记活起来</span></p>
+<p>注卡让你可以：</p>
+<ul class="region-list"><li>在正文中嵌入解释<span class="inline-explanation">不打断阅读流</span></li><li>提供额外信息<span class="inline-explanation">背景、示例、扩展</span></li><li>主动回忆知识点<span class="inline-explanation">点击注卡测试理解</span></li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">注卡的威力</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>对比一下就知道<span class="inline-explanation">效果立竿见影</span></p>
+<p><div class='code-block'>变量是存储数据的容器，在内存中分配空间。<br/>变量有作用域，分为局部变量和全局变量。<br/>变量可以被赋值和重新赋值。</div></p>
+<p>问题：信息密集，难以消化<span class="inline-explanation">被动阅读</span></p>
+<p><div class='code-block'>[变量 | 存储数据的容器] 是在 [内存 | 计算机的存储空间] 中分配空间。<br/>变量有 [作用域 | 变量的有效范围]，分为 [局部变量 | 函数内部定义的变量] <br/>和 [全局变量 | 函数外部定义的变量]。<br/>变量可以被 [赋值 | 给变量赋予值] 和重新赋值。</div></p>
+<p>优势：主动解释术语<span class="inline-explanation">悬停查看加深理解</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">注卡的高级用法</div>
+            <div class="region-content">
+                <div class="content">
+                    <ul class="region-list"><li>嵌套注卡</li></ul>
+<p><div class='code-block'>[面向对象 | [OOP|Object-Oriented Programming] 的中文名称] ^编程范式</div></p>
+<ul class="region-list"><li>长注卡</li></ul>
+<p><div class='code-block'>[递归 | 函数调用自身的过程。<br/>递归需要两个要素：<br/>1. 基本情况 - 终止条件<br/>2. 递归情况 - 继续调用<br/><br/>例如：计算阶乘 n! = n × (n-1)!] ^数学和编程中的重要概念</div></p>
+<ul class="region-list"><li>注卡归档</li></ul>
+<p>所有注卡会自动汇总到页面底部<span class="inline-explanation">生成复习卡片</span></p>
+<p><div class='code-block'>📇 注卡归档（本卡片共 8 个注卡）<br/><br/>【核心概念】<br/>1. 变量 - 存储数据的容器<br/>2. 内存 - 计算机的存储空间<br/>3. 作用域 - 变量的有效范围<br/><br/>【易错点】<br/>4. 局部变量 - 函数内部定义，外部不能访问<br/>5. 全局变量 - 整个程序可用，但慎用<br/><br/>【实用技巧】<br/>6. OOP - Object-Oriented Programming<br/>7. 递归 - 函数调用自身的过程<br/>8. 赋值 - 给变量赋予值<br/><br/>点击注卡可跳回原文查看上下文</div></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-标签系统-构建知识网络">
+            <h2 class="card-title">🔗 标签系统 - 构建知识网络</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">核心特色</span>
+                </div>
+            </div>
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">重要</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">标签的力量</div>
+            <div class="region-content">
+                <div class="content">
+                    <p> 
+        <span class="annotation-container">
+            <span class="annotation" id="annotation_4">
+                标签
+                <span class="annotation-popup">
+                    卡片的元数据标记
+                    <a href="#annotation_4" class="back-to-source">↩ 跳回原文</a>
+                </span>
+            </span>
+        </span>
+         让知识互联<span class="inline-explanation">打破分类限制</span></p>
+<p>标签可以做到的：</p>
+<ul class="region-list"><li>标记重要性<span class="inline-explanation">区分优先级</span></li><li>建立关联<span class="inline-explanation">链接相关卡片</span></li><li>标注状态<span class="inline-explanation">跟踪学习进度</span></li><li>自定义分类<span class="inline-explanation">个人知识体系</span></li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">标签类型</div>
+            <div class="region-content">
+                <div class="content">
+                    <ul class="region-list"><li>基础标签</li></ul>
+<p><div class='code-block'>(!: 重要) (i: 信息) (?: 问题) (✓: 完成)</div></p>
+<ul class="region-list"><li>关联标签</li></ul>
+<p><div class='code-block'>(&gt;: #目标卡片) (&gt;: #先修知识) <br/>(&gt;: #进阶内容) (&gt;: #相似概念)<br/>(&gt;: #对比概念) (&gt;: #实际案例)</div></p>
+<ul class="region-list"><li>自定义标签</li></ul>
+<p><div class='code-block'>(难度: ) (优先级: ) <br/>(分类: ) (系列: #Python 入门)<br/>(时间: ) (状态: )</div></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">知识网络实例</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><div class='code-block'># Python 知识网络<br/><br/>## 变量<br/>(!: 核心概念) (!: 重要)<br/>(&gt;: #环境配置) (&gt;: #数据类型)<br/>(&gt;: #作用域) (&gt;: #常量)<br/><br/>## 数据类型<br/>(!: 重要) (&gt;: #变量)<br/>(&gt;: #变量) (&gt;: #运算符)<br/>(&gt;: #类型转换) (&gt;: #数据处理)<br/><br/>## 函数<br/>(!: 核心概念) (!: 重要)<br/>(&gt;: #变量) (&gt;: #高阶函数)<br/>(&gt;: #作用域) (&gt;: #模块化编程)<br/><br/>## 装饰器<br/>(*: 高级特性) (难度: )<br/>(&gt;: #函数) (&gt;: #元类)<br/>(&gt;: #设计模式) (&gt;: #Web 框架)<br/>(&gt;: #日志装饰器) (&gt;: #权限验证)<br/><br/>## 面向对象<br/>(!: 核心概念) (!: 重要)<br/>(&gt;: #函数) (&gt;: #继承和多态)<br/>(&gt;: #面向过程) (&gt;: #大型项目)</div></p>
+<p>这样的网络效果：</p>
+<ul class="region-list"><li>点击任何卡片的标签<span class="inline-explanation">跳转到相关卡片</span></li><li>形成知识图谱<span class="inline-explanation">可视化知识结构</span></li><li>发现知识盲点<span class="inline-explanation">哪些还没学</span></li><li>规划学习路径<span class="inline-explanation">下一步学什么</span></li></ul>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-智能学习-从记录到复习">
+            <h2 class="card-title">🧠 智能学习 - 从记录到复习</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">核心特色</span>
+                </div>
+            </div>
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">重要</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">学习闭环</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>RemUp 支持完整的学习流程：</p>
+<p>输入阶段</p>
+<ul class="region-list"><li>课堂笔记<span class="inline-explanation">实时记录</span></li><li>读书摘抄<span class="inline-explanation">提取要点</span></li><li>视频课程<span class="inline-explanation">关键知识点</span></li></ul>
+<p>加工阶段</p>
+<ul class="region-list"><li>添加注卡<span class="inline-explanation">深度理解</span></li><li>建立关联<span class="inline-explanation">融会贯通</span></li><li>制作卡片<span class="inline-explanation">结构化知识</span></li></ul>
+<p>输出阶段</p>
+<ul class="region-list"><li>复习归档<span class="inline-explanation">自动汇总</span></li><li>分享笔记<span class="inline-explanation">教学相长</span></li><li>实战应用<span class="inline-explanation">解决问题</span></li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">复习神器</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>注卡自动归档</p>
+<p><div class='code-block'>📇 本章节注卡汇总（共 25 个）<br/><br/>按类别分组：<br/>【核心概念】<br/>- 变量 - 存储数据的容器<br/>- 函数 - 可重复使用的代码块<br/>- 类 - 对象的模板<br/><br/>【易错点】<br/>- 局部变量 - 函数内部定义，外部不能访问<br/>- 全局变量 - 整个程序可用，但慎用<br/>- 可变类型 - 列表、字典，注意引用问题<br/><br/>【实用技巧】<br/>- 类型提示 - Python 3.5+ 的新特性<br/>- 解包赋值 - a, b = b, a 交换变量<br/>- 列表推导式 - 一行代码创建列表</div></p>
+<p>标签筛选复习</p>
+<p><div class='code-block'>只显示 (!: 重要) 的卡片 ^考前重点<br/>只显示 (?: 问题) 的卡片 ^解决疑惑<br/>只显示 (!: 未完成) 的卡片 ^继续学习</div></p>
+<p>知识地图</p>
+<p><div class='code-block'>Python 编程<br/>├── 基础部分 ✅ 已掌握<br/>│   ├── 变量和数据类型<br/>│   ├── 控制流程<br/>│   └── 函数<br/>├── 进阶部分 🔄 学习中<br/>│   ├── 面向对象<br/>│   ├── 异常处理<br/>│   └── 文件操作<br/>└── 高级部分 ⏳ 未开始<br/>    ├── 装饰器<br/>    ├── 元类<br/>    └── 并发编程</div></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+                </div>
+            </section>
+            
+
+            <section class="archive-section">
+                <h2 class="archive-title">RemUp 语法速览</h2>
+                <div class="archive-cards">
+            
+        <div class="card" id="card-极简语法推荐新手">
+            <h2 class="card-title">极简语法推荐新手</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">基础</span>
+                </div>
+            </div>
+            
+            <div class="label reference">
+                <span class="label-symbol">></span>
+                <div class="label-contents">
+                    <span class="label-content">环境准备</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">基本结构</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><div class='code-block'># 归档名         ← 大主题分类<br/><br/>## 卡片主题       ← 知识点<br/>(!: 重要) (&gt;: #其他卡片)<br/><br/>### 区域名        ← 知识的某个方面<br/>这是正文内容 [术语 | 解释说明] ^行内解释<br/><br/>- 列表项 1<br/>- 列表项 2<br/><br/>```python<br/># 代码块<br/>print(&quot;Hello&quot;)</div></p>
+<p>> 引用文字</p>
+<p><div class='code-block'><br/>就这么简单 ^5 分钟就能学会<br/><br/>### 常用元素<br/><br/>- 标签<br/><br/>```remup<br/>(!: 重要) (&gt;: #目标) (?: 问题)</div></p>
+<ul class="region-list"><li>注卡</li></ul>
+<p><div class='code-block'>[内容 | 批注说明]</div></p>
+<ul class="region-list"><li>行内解释</li></ul>
+<p><div class='code-block'>主要内容 ^简短解释</div></p>
+<ul class="region-list"><li>格式化</li></ul>
+<p><div class='code-block'>**加粗文本** *斜体文本* ==高亮文本==<br/>`行内代码` [链接](url) ![图片](url)</div></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-双语法支持">
+            <h2 class="card-title">双语法支持</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">特色功能</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">极简语法现代简洁</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><div class='code-block'># 归档名<br/>## 卡片主题<br/>### 区域名<br/>(!: 标签)<br/>[内容 | 批注]<br/>^解释</div></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">传统语法经典明确</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><div class='code-block'>--&lt;归档名&gt;--<br/>&lt;+卡片主题<br/>(!: 标签)<br/>`内容`[批注]<br/>&gt;&gt;解释<br/>/+&gt;</div></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">选择建议</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>新手推荐<span class="inline-explanation">极简语法更符合现代习惯</span></p>
+<p>老手随意<span class="inline-explanation">两种语法完全等价</span></p>
+<p>团队统一<span class="inline-explanation">根据项目需求选择</span></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-语法对比">
+            <h2 class="card-title">语法对比</h2>
+            
+            <!-- 标签区域 -->
+            
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">表格</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><div class='code-block'>| 功能 | 极简语法 | 传统语法 | 推荐使用 |<br/>|------|---------|---------|---------|<br/>| 归档 | `# 名` | `--&lt;名&gt;--` | 极简 ✨ |<br/>| 卡片 | `## 主题` | `&lt;+主题` | 极简 ✨ |<br/>| 区域 | `### 名` | `---名` | 极简 ✨ |<br/>| 标签 | `(!: 重要)` | `(!: )` | 极简 ✨ |<br/>| 注卡 | `[内容 \| 批注]` | `` `内容`[批注] `` | 极简 ✨ |<br/>| 解释 | `^解释` | `&gt;&gt;解释` | 极简 ✨ |</div></p>
+<p>提示：两种语法可以混合使用<span class="inline-explanation">但不推荐在同一卡片内混用</span></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+                </div>
+            </section>
+            
+
+            <section class="archive-section">
+                <h2 class="archive-title">主要使用场景</h2>
+                <div class="archive-cards">
+            
+        <div class="card" id="card-学习型笔记最适用">
+            <h2 class="card-title">📖 学习型笔记最适用</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">推荐</span>
+                </div>
+            </div>
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">重要</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">课堂笔记</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><div class='code-block'># 高等数学<br/><br/>## 导数<br/>(!: 核心概念) (!: 重要)<br/>(&gt;: #极限) (&gt;: #积分)<br/><br/>### 定义<br/>[导数 | 函数在某点的瞬时变化率] ^微分学的核心<br/><br/>### 几何意义<br/>曲线在该点的切线斜率 ^连接代数与几何<br/><br/>### 公式<br/>[f&#x27;(x) = lim(h→0) [f(x+h) - f(x)] / h] ^导数的定义式<br/><br/>### 应用场景<br/>- 物理学：速度和加速度 ^位移的导数是速度<br/>- 经济学：边际成本 ^成本函数的导数<br/>- 工程学：优化设计 ^求最大值最小值</div></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">读书笔记</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><div class='code-block'># 《金字塔原理》读书笔记<br/><br/>## 结论先行<br/>(!: 核心原则) (!: 重要)<br/><br/>### 含义<br/>表达时先说结论 ^让对方知道你要说什么<br/><br/>### 原因<br/>- 节省时间 ^直接知道重点<br/>- 便于理解 ^有框架好吸收<br/>- 印象深刻 ^首因效应<br/><br/>### 应用场景<br/>- 工作汇报 ^先说结果<br/>- 写文章 ^开头点题<br/>- 演讲开场 ^表明观点<br/><br/>## 以上统下<br/>(!: 重要)<br/>(&gt;: #结论先行)<br/><br/>### 含义<br/>上层思想统领下层思想 ^逻辑清晰<br/><br/>### 要求<br/>- 总结概括下层内容<br/>- 不能脱离下层凭空产生<br/>- 要有事实依据<br/><br/>### 检查方法<br/>问自己：这个结论有依据吗？</div></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">在线课程笔记</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><div class='code-block'># Python 网络爬虫教程<br/><br/>## requests 库<br/>(!: 重要) (&gt;: #数据抓取)<br/><br/>### 安装<br/>```bash<br/>pip install requests</div></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">基本用法</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><div class='code-block'>import requests<br/>response = requests.get(&quot;https://example.com&quot;)<br/>print(response.status_code)  # 状态码<br/>print(response.text)         # 网页内容</div></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">注意事项</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>⚠️ 遵守 robots.txt 协议<span class="inline-explanation">爬虫伦理</span></p>
+<p>⚠️ 控制请求频率<span class="inline-explanation">避免被封 IP</span></p>
+<p>⚠️ 添加 User-Agent<span class="inline-explanation">伪装浏览器</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">实战练习</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>爬取某网站的新闻列表<span class="inline-explanation">综合应用所学知识</span></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-工作文档很适用">
+            <h2 class="card-title">💼 工作文档很适用</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">推荐</span>
+                </div>
+            </div>
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">重要</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">会议纪要</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><div class='code-block'># 项目周会纪要 2026-01-25<br/>(!: 会议) (优先级: )<br/><br/>## 参会人员<br/>(i: 信息)<br/>张三、李四、王五、赵六<br/><br/>## 本周进展<br/><br/>### 前端组<br/>- 完成登录页面 ^张三<br/>- 进行中：首页重构 ^预计周三完成<br/><br/>### 后端组  <br/>- 完成用户 API ^李四<br/>- 遇到问题：数据库性能优化 ^需要讨论<br/><br/>## 待决事项<br/>(?: 问题) (优先级: )<br/>1. 数据库选型：MySQL vs PostgreSQL<br/>2. 部署方案：Docker vs 传统部署<br/><br/>## 下周计划<br/>(!: 任务) (!: 截止:#2026-02-01)<br/>- 前端：完成首页和详情页<br/>- 后端：完成订单模块<br/>- 测试：编写测试用例</div></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">技术方案</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><div class='code-block'># 用户系统设计<br/>(!: 技术文档) (!: 重要)<br/><br/>## 需求分析<br/>(&gt;: #产品文档)<br/><br/>### 功能需求<br/>- 用户注册登录<br/>- 个人信息管理<br/>- 权限控制<br/><br/>### 非功能需求<br/>- 支持 10 万并发 ^性能要求<br/>- 99.9% 可用性 ^可靠性要求<br/>- 数据加密存储 ^安全要求<br/><br/>## 架构设计<br/>(!: 核心) (&gt;: #架构模式)<br/><br/>### 技术选型<br/>- 前端：React + TypeScript<br/>- 后端：Spring Boot<br/>- 数据库：MySQL + Redis<br/><br/>### 架构图<br/>![系统架构](images/architecture.png)<br/><br/>## 风险评估<br/>(!: 风险)<br/>⚠️ 技术难点：分布式 session 管理<br/>⚠️ 人员风险：核心开发人员可能离职<br/>⚠️ 时间风险：需求可能变更</div></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">项目复盘</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><div class='code-block'># Q4 项目复盘<br/>(!: 复盘) (!: 季度:#2025-Q4)<br/><br/>## 项目概况<br/>(i: 信息)<br/>项目名称：电商平台升级<br/>时间：2025-10 至 2025-12<br/>团队成员：8 人<br/><br/>## 成果总结<br/><br/>### 完成情况<br/>✅ 前端重构 - 性能提升 50%<br/>✅ 后端优化 - 响应时间降低 30%<br/>✅ 新功能上线 - 购物车、收藏夹<br/><br/>### 数据指标<br/>- DAU: 10 万 → 15 万 ^增长 50%<br/>- 转化率：2% → 3.5% ^增长 75%<br/>- 客诉率：5% → 2% ^下降 60%<br/><br/>## 经验教训<br/>(!: 反思)<br/><br/>### 做得好的<br/>- 每日站会 ^信息同步及时<br/>- Code Review ^代码质量高<br/>- 自动化测试 ^bug 少<br/><br/>### 需要改进的<br/>⚠️ 需求评审不充分 ^导致返工<br/>⚠️ 风险评估不足 ^遇到技术难题<br/>⚠️ 沟通成本高 ^跨部门协作困难<br/><br/>## 改进行动<br/>(!: 任务) (优先级: )<br/>1. 建立需求评审 checklist<br/>2. 技术预研提前进行<br/>3. 定期跨部门交流</div></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-知识管理非常适合">
+            <h2 class="card-title">🗂️ 知识管理非常适合</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">推荐</span>
+                </div>
+            </div>
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">重要</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">个人知识库</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><div class='code-block'># 我的知识库<br/>(!: 知识管理)<br/><br/>## 编程语言<br/>- [[Python]] [[JavaScript]] [[Java]] [[Go]]<br/><br/>## 计算机科学<br/>- [[算法]] [[数据结构]] [[操作系统]] [[网络]]<br/><br/>## 软技能<br/>- [[沟通表达]] [[时间管理]] [[学习方法]]<br/><br/>## 兴趣爱好<br/>- [[摄影]] [[吉他]] [[烹饪]]</div></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">技能树</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><div class='code-block'># 全栈开发技能树<br/>(!: 技能规划)<br/><br/>## 前端基础 ✅<br/>- HTML/CSS<br/>- JavaScript ES6+<br/>- DOM 操作<br/><br/>## 前端框架 🔄<br/>- React / Vue<br/>- 状态管理 Redux/Vuex<br/>- 构建工具 Webpack/Vite<br/><br/>## 后端开发 ⏳<br/>- Node.js / Python<br/>- 数据库 SQL/NoSQL<br/>- RESTful API<br/><br/>## DevOps ⏳<br/>- Git 版本控制<br/>- Docker 容器化<br/>- CI/CD 流程</div></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">第二大脑</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><div class='code-block'># 我的第二大脑<br/>(!: 知识体系)<br/><br/>## 收集箱 📥<br/>临时收集的信息 ^定期整理<br/><br/>## 知识库 📚<br/>系统化整理的知识 ^随时查阅<br/><br/>## 项目库 💼<br/>正在进行的项目 ^实践应用<br/><br/>## 输出库 📤<br/>文章、分享、作品 ^知识变现</div></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-备考复习效果显著">
+            <h2 class="card-title">📚 备考复习效果显著</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">推荐</span>
+                </div>
+            </div>
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">重要</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">考试复习</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><div class='code-block'># 考研政治复习<br/>(!: 备考) (!: 考试:#2026 考研)<br/><br/>## 马克思主义基本原理<br/>(!: 重点) (!: 考频：⭐⭐⭐⭐⭐)<br/><br/>### 唯物论<br/>[物质 | 客观存在的实在] ^哲学基本问题<br/><br/>### 辩证法<br/>- 对立统一规律 ^核心<br/>- 质量互变规律<br/>- 否定之否定规律<br/><br/>### 认识论<br/>实践 → 认识 → 再实践 → 再认识 ^循环往复<br/><br/>## 历年真题<br/>(!: 真题) (!: 年份:#2023)<br/><br/>### 选择题<br/>1. 哲学的基本问题是？<br/>   A. 思维和存在的关系 ✅<br/>   B. 物质和意识的关系<br/>   C. 运动和静止的关系<br/><br/>### 分析题<br/>结合材料，论述实践和认识的辩证关系<br/>答题要点：<br/>- 实践是认识的来源<br/>- 实践是认识发展的动力<br/>- 实践是检验真理的唯一标准<br/>- 实践是认识的目的</div></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">证书考试</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><div class='code-block'># PMP 项目管理认证<br/>(!: 备考) (!: 证书:#PMP)<br/><br/>## 五大过程组<br/>(!: 必考) (!: 重要)<br/><br/>### 启动过程组<br/>- 制定项目章程<br/>- 识别相关方<br/><br/>### 规划过程组<br/>- 制定项目管理计划<br/>- 收集需求<br/>- 定义范围<br/><br/>### 执行过程组<br/>- 指导和管理项目工作<br/>- 管理项目知识<br/>- 管理质量<br/><br/>### 监控过程组<br/>- 监控项目工作<br/>- 实施整体变更控制<br/>- 确认范围<br/><br/>### 收尾过程组<br/>- 结束项目或阶段<br/>- 结束采购<br/><br/>## 十大知识领域<br/>(!: 必背)<br/><br/>### 整合管理<br/>协调所有其他知识领域 ^确保项目成功<br/><br/>### 范围管理<br/>确保项目做且只做该做的事 ^防止范围蔓延<br/><br/>### 时间管理<br/>保证项目按时完成 ^关键路径法<br/><br/>## 错题集<br/>(!: 错题) (!: 薄弱点)<br/><br/>### 错题 1<br/>题目：...<br/>错误答案：A<br/>正确答案：C<br/>解析：... ^考查知识点 X</div></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+                </div>
+            </section>
+            
+
+            <section class="archive-section">
+                <h2 class="archive-title">RemUp 的能力边界</h2>
+                <div class="archive-cards">
+            
+        <div class="card" id="card-适合的场景">
+            <h2 class="card-title">✅ 适合的场景</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">理性看待</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">知识密集型</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>学习内容复杂<span class="inline-explanation">需要深入理解</span></p>
+<p>知识点众多<span class="inline-explanation">需要系统组织</span></p>
+<p>关联性强<span class="inline-explanation">需要建立联系</span></p>
+<p>具体例子：</p>
+<ul class="region-list"><li>大学课程笔记</li><li>职业技能学习</li><li>证书考试复习</li><li>读书笔记摘抄</li><li>技术文档整理</li><li>研究文献综述</li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">长期积累型</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>持续学习某个领域<span class="inline-explanation">知识不断累积</span></p>
+<p>需要定期复习<span class="inline-explanation">对抗遗忘</span></p>
+<p>构建个人体系<span class="inline-explanation">形成知识网络</span></p>
+<p>具体例子：</p>
+<ul class="region-list"><li>个人知识库建设</li><li>技能树发展</li><li>研究方向梳理</li><li>终身学习记录</li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">交互需求强</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>需要主动思考<span class="inline-explanation">不是被动记录</span></p>
+<p>需要深度加工<span class="inline-explanation">理解内化</span></p>
+<p>需要测试效果<span class="inline-explanation">检验掌握程度</span></p>
+<p>具体例子：</p>
+<ul class="region-list"><li>概念理解笔记</li><li>解题思路分析</li><li>代码学习注释</li><li>文献批判性阅读</li></ul>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-不适合的场景">
+            <h2 class="card-title">❌ 不适合的场景</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">理性看待</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">简单记录型</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>购物清单<span class="inline-explanation">不需要关联</span></p>
+<p>待办事项<span class="inline-explanation">线性列表即可</span></p>
+<p>日程安排<span class="inline-explanation">时间顺序为主</span></p>
+<p>原因：RemUp 的功能过剩<span class="inline-explanation">杀鸡用牛刀</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">纯文本输出</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>小说创作<span class="inline-explanation">连续文本</span></p>
+<p>诗歌散文<span class="inline-explanation">文学性优先</span></p>
+<p>新闻报道<span class="inline-explanation">时效性重要</span></p>
+<p>原因：RemUp 强调结构化<span class="inline-explanation">不适合自由创作</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">高度格式化</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>财务报表<span class="inline-explanation">严格格式要求</span></p>
+<p>法律合同<span class="inline-explanation">条款编号固定</span></p>
+<p>学术论文<span class="inline-explanation">格式规范严格</span></p>
+<p>原因：RemUp 灵活性高<span class="inline-explanation">但格式控制弱</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">协作编辑型</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>团队 Wiki<span class="inline-explanation">多人同时编辑</span></p>
+<p>共享文档<span class="inline-explanation">实时协作</span></p>
+<p>代码注释<span class="inline-explanation">与代码强绑定</span></p>
+<p>原因：RemUp 是单人工具<span class="inline-explanation">协作功能弱</span></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-需要权衡的场景">
+            <h2 class="card-title">⚠️ 需要权衡的场景</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">理性看待</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">技术文档</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>优点：结构清晰、可关联</p>
+<p>缺点：不如 Markdown 普及</p>
+<p>建议：个人笔记用 RemUp，公开文档用 Markdown</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">会议记录</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>优点：可追踪、可关联</p>
+<p>缺点：实时记录可能慢</p>
+<p>建议：重要会议用 RemUp，日常站会用简单工具</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">项目规划</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>优点：可分解、可关联</p>
+<p>缺点：不如专业 PM 工具</p>
+<p>建议：小项目用 RemUp，大项目用 Jira/Trello</p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-选择建议">
+            <h2 class="card-title">选择建议</h2>
+            
+            <!-- 标签区域 -->
+            
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">动起来</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>问自己三个问题：</p>
+<ol class="region-list"><li>我需要深度学习吗？</li></ol>
+<ul class="region-list"><li>是 → RemUp 很适合</li><li>否 → 考虑其他工具</li></ul>
+<ol class="region-list"><li>知识需要长期积累吗？</li></ol>
+<ul class="region-list"><li>是 → RemUp 很有价值</li><li>否 → 简单笔记即可</li></ul>
+<ol class="region-list"><li>需要建立知识网络吗？</li></ol>
+<ul class="region-list"><li>是 → RemUp 是最佳选择</li><li>否 → 树状结构就够了</li></ul>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+                </div>
+            </section>
+            
+
+            <section class="archive-section">
+                <h2 class="archive-title">谁适合使用 RemUp？</h2>
+                <div class="archive-cards">
+            
+        <div class="card" id="card-学生群体强烈推荐">
+            <h2 class="card-title">🎓 学生群体强烈推荐</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">目标用户</span>
+                </div>
+            </div>
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">推荐度：⭐⭐⭐⭐⭐</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">大学生</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>专业课笔记<span class="inline-explanation">构建知识体系</span></p>
+<p>考证复习<span class="inline-explanation">高效记忆</span></p>
+<p>科研文献<span class="inline-explanation">知识管理</span></p>
+<p>收益：</p>
+<ul class="region-list"><li>成绩提升<span class="inline-explanation">理解更深刻</span></li><li>学习效率提高<span class="inline-explanation">节省时间</span></li><li>为未来打基础<span class="inline-explanation">知识积累</span></li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">研究生</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>研究方向梳理</p>
+<p>论文写作素材</p>
+<p>学术网络构建</p>
+<p>收益：</p>
+<ul class="region-list"><li>研究思路清晰</li><li>写作更高效</li><li>学术成果积累</li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">自学者</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>在线课程笔记</p>
+<p>技能学习记录</p>
+<p>成长轨迹追踪</p>
+<p>收益：</p>
+<ul class="region-list"><li>系统性学习</li><li>可见的进步</li><li>作品集展示</li></ul>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-职场人士很适合">
+            <h2 class="card-title">💻 职场人士很适合</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">目标用户</span>
+                </div>
+            </div>
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">推荐度：⭐⭐⭐⭐</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">技术人员</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>技术栈学习</p>
+<p>问题解决记录</p>
+<p>项目经验总结</p>
+<p>收益：</p>
+<ul class="region-list"><li>技能提升快</li><li>问题不再重复</li><li>面试有资本</li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">产品经理</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>用户研究笔记</p>
+<p>竞品分析</p>
+<p>产品规划文档</p>
+<p>收益：</p>
+<ul class="region-list"><li>洞察更深刻</li><li>决策有依据</li><li>职业发展好</li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">运营人员</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>活动策划复盘</p>
+<p>数据分析报告</p>
+<p>行业研究笔记</p>
+<p>收益：</p>
+<ul class="region-list"><li>活动效果好</li><li>数据驱动决策</li><li>行业认知深</li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">管理人员</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>管理理论学习</p>
+<p>团队经验总结</p>
+<p>决策记录</p>
+<p>收益：</p>
+<ul class="region-list"><li>管理水平提升</li><li>团队更高效</li><li>领导力增强</li></ul>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-终身学习者最适合">
+            <h2 class="card-title">🎯 终身学习者最适合</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">目标用户</span>
+                </div>
+            </div>
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">推荐度：⭐⭐⭐⭐⭐</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">知识爱好者</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>读书笔记</p>
+<p>课程学习</p>
+<p>思维模型</p>
+<p>收益：</p>
+<ul class="region-list"><li>知识面广</li><li>思维敏捷</li><li>生活充实</li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">技能达人</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>多项技能学习</p>
+<p>跨界知识整合</p>
+<p>T 型人才发展</p>
+<p>收益：</p>
+<ul class="region-list"><li>复合型人才</li><li>竞争力强</li><li>职业选择多</li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">研究者</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>专题研究</p>
+<p>文献综述</p>
+<p>理论构建</p>
+<p>收益：</p>
+<ul class="region-list"><li>研究成果</li><li>学术影响</li><li>知识贡献</li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">你不适合 RemUp，如果...</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>你只是简单记录<span class="inline-explanation">不需要深度思考</span></p>
+<p>你追求即时满足<span class="inline-explanation">不想投入学习成本</span></p>
+<p>你喜欢花哨功能<span class="inline-explanation">不爱纯文本</span></p>
+<p>你主要团队协作<span class="inline-explanation">单人使用少</span></p>
+<p>否则<span class="inline-explanation">RemUp 会很适合你！</span></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+                </div>
+            </section>
+            
+
+            <section class="archive-section">
+                <h2 class="archive-title">如何开始使用 RemUp？</h2>
+                <div class="archive-cards">
+            
+        <div class="card" id="card-第一步了解语法-10-分钟">
+            <h2 class="card-title">第一步了解语法 10 分钟</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">行动指南</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">语法</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>查看 <a href="QUICK_REFERENCE.md">语法速查表</a><span class="inline-explanation">快速上手</span></p>
+<p>极简语法只需记住：</p>
+<p><div class='code-block'># 归档<br/>  ## 卡片<br/>    ### 区域<br/>    <br/>(!: 标签)<br/>[内容 | 注卡]<br/>^行内解释</div></p>
+<p>就这么简单<span class="inline-explanation">比学英语简单多了</span></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-第二步创建第一篇笔记-30-分钟">
+            <h2 class="card-title">第二步创建第一篇笔记 30 分钟</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">行动指南</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">实践</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>选择一个你正在学习的内容<span class="inline-explanation">比如：</span></p>
+<ul class="region-list"><li>刚上的一节课</li><li>刚读的一章书</li><li>刚学的一个概念</li></ul>
+<p>按照这个结构：</p>
+<p><div class='code-block'># 课程名/书名/主题<br/><br/>## 核心概念 1<br/>(!: 重要)<br/><br/>### 定义<br/>[概念名 | 解释] ^通俗理解<br/><br/>### 要点<br/>- 要点 1<br/>- 要点 2<br/><br/>### 例子<br/>具体示例<br/><br/>### 联系<br/>- @前置:#相关概念<br/>- @后续:#进阶内容</div></p>
+<p>立即动手<span class="inline-explanation">实践出真知</span></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-第三步编译查看-5-分钟">
+            <h2 class="card-title">第三步编译查看 5 分钟</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">行动指南</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">编译</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><div class='code-block'>remup build your_note.remup</div></p>
+<p>打开生成的 HTML 文件<span class="inline-explanation">体验交互效果</span></p>
+<p>你会惊喜地发现：</p>
+<ul class="region-list"><li>注卡可以悬停查看<span class="inline-explanation">好玩</span></li><li>标签可以点击跳转<span class="inline-explanation">神奇</span></li><li>注卡自动归档<span class="inline-explanation">省心</span></li></ul>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-第四步建立习惯持续">
+            <h2 class="card-title">第四步建立习惯持续</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">行动指南</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">每天</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>记录 1-2 个知识点<span class="inline-explanation">积少成多</span></p>
+<p>添加注卡和标签<span class="inline-explanation">深度加工</span></p>
+<p>时间：15-30 分钟<span class="inline-explanation">不难坚持</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">每周</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>整理一次笔记<span class="inline-explanation">归类合并</span></p>
+<p>复习注卡归档<span class="inline-explanation">强化记忆</span></p>
+<p>时间：1-2 小时<span class="inline-explanation">值得投入</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">每月</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>回顾知识网络<span class="inline-explanation">查漏补缺</span></p>
+<p>更新学习计划<span class="inline-explanation">调整方向</span></p>
+<p>时间：半天<span class="inline-explanation">战略投资</span></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-学习路线">
+            <h2 class="card-title">学习路线</h2>
+            
+            <!-- 标签区域 -->
+            
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">路线</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><div class='code-block'>第 1 天：了解语法，创建第一篇笔记<br/>  ↓<br/>第 1 周：熟练使用注卡和标签<br/>  ↓<br/>第 1 月：建立个人知识体系雏形<br/>  ↓<br/>持续：不断完善，形成第二大脑</div></p>
+<p>投入产出比：</p>
+<ul class="region-list"><li>前期投入：几小时</li><li>长期收益：学习效率提升 30-50%</li></ul>
+<p>非常划算<span class="inline-explanation">投资自己最值得</span></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-常见问题">
+            <h2 class="card-title">常见问题</h2>
+            
+            <!-- 标签区域 -->
+            
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">Q: 学不会怎么办？</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>答：不可能学不会<span class="inline-explanation">真的简单</span></p>
+<p>10 分钟看语法<span class="inline-explanation">小学生都能懂</span></p>
+<p>30 分钟写第一篇<span class="inline-explanation">动手就会</span></p>
+<p>1 周熟练使用<span class="inline-explanation">熟能生巧</span></p>
+<p>实在不行<span class="inline-explanation">看示例文件照着写</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">Q: 坚持不下来怎么办？</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>答：正常现象<span class="inline-explanation">人人都这样</span></p>
+<p>降低期望<span class="inline-explanation">每天只记一个知识点</span></p>
+<p>看到收益<span class="inline-explanation">复习时感受到便利</span></p>
+<p>形成正循环<span class="inline-explanation">越用越好用</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">Q: 有没有图形界面？</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>答：目前主要是文本编辑器</p>
+<p>VS Code + RemUp 语法高亮<span class="inline-explanation">够用</span></p>
+<p>计划中会有 GUI 编辑器<span class="inline-explanation">敬请期待</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">Q: 手机上能用吗？</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>答：可以查看 HTML</p>
+<p>编译后的 HTML 任何设备都能打开</p>
+<p>手机、平板、电脑<span class="inline-explanation">通吃</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">Q: 和其他工具比怎么样？</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>答：各有优劣<span class="inline-explanation">看需求</span></p>
+<p>vs Markdown：RemUp 更适合学习</p>
+<p>vs Obsidian：RemUp 更轻量专注</p>
+<p>vs Notion：RemUp 更深度个性化</p>
+<p>最佳策略<span class="inline-explanation">组合使用 ^各取所长</span></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+                </div>
+            </section>
+            
+
+            <section class="archive-section">
+                <h2 class="archive-title">开始你的 RemUp 之旅</h2>
+                <div class="archive-cards">
+            
+        <div class="card" id="card-立即行动">
+            <h2 class="card-title">立即行动</h2>
+            
+            <!-- 标签区域 -->
+            
+        <div class="labels-container">
+            
+            <div class="label important">
+                <span class="label-symbol">!</span>
+                <div class="label-contents">
+                    <span class="label-content">召唤</span>
+                </div>
+            </div>
+            
+        </div>
+        
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">现在就开始</div>
+            <div class="region-content">
+                <div class="content">
+                    <ol class="region-list"><li>下载 RemUp 编译器</li><li>创建第一个 .remup 文件</li><li>写下第一个卡片</li><li>编译查看效果</li></ol>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">记住这句话</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>> 最好的笔记工具，是你愿意持续使用的那个<span class="inline-explanation">RemUp 让你爱上记笔记</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">不要犹豫</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>犹豫只会让你原地踏步<span class="inline-explanation">行动才能前进</span></p>
+<p>现在不开始<span class="inline-explanation">永远都不会开始</span></p>
+<p>种一棵树最好的时间是十年前<span class="inline-explanation">其次是现在</span></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-学习资源">
+            <h2 class="card-title">学习资源</h2>
+            
+            <!-- 标签区域 -->
+            
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">官方文档</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><a href="README.md">README.md</a> - 完整使用说明</p>
+<p><a href="QUICK</em>REFERENCE.md">QUICK<em>REFERENCE.md</a> - 语法速查表</p>
+<p><a href="examples/">examples/</a> - 实战示例</p>
+<p><a href="INTRODUCTION.md">INTRODUCTION.md</a> - 本文档</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">示例笔记</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>examples/Python<em>Basic</em>Note.remup<span class="inline-explanation">Python 学习笔记完整示例</span></p>
+<p>examples/dual<em>syntax</em>example.remup<span class="inline-explanation">双语法演示</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">社区资源</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>GitHub Issues<span class="inline-explanation">提问和交流</span></p>
+<p>用户分享筹备中<span class="inline-explanation">优秀笔记模板</span></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-最后的叮嘱">
+            <h2 class="card-title">最后的叮嘱</h2>
+            
+            <!-- 标签区域 -->
+            
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">三个建议</div>
+            <div class="region-content">
+                <div class="content">
+                    <ol class="region-list"><li>别追求完美<span class="inline-explanation">先完成再完美</span></li><li>别贪多求快<span class="inline-explanation">每天进步一点点</span></li><li>别轻言放弃<span class="inline-explanation">坚持就是胜利</span></li></ol>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">一个信念</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>> 你用 RemUp 记录的每一张卡片<span class="inline-explanation">都在塑造更强大的自己</span></p>
+<p>日积月累<span class="inline-explanation">聚沙成塔</span></p>
+<p>假以时日<span class="inline-explanation">必有收获</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">一份期待</div>
+            <div class="region-content">
+                <div class="content">
+                    <p>期待你<span class="inline-explanation">用 RemUp 构建知识体系</span></p>
+<p>期待你<span class="inline-explanation">用 RemUp 提升学习效率</span></p>
+<p>期待你<span class="inline-explanation">用 RemUp 实现学习目标</span></p>
+<p><div align="center"></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="card" id="card-remup-让学习更高效">
+            <h2 class="card-title">🚀 RemUp - 让学习更高效</h2>
+            
+            <!-- 标签区域 -->
+            
+            
+            <!-- 区域内容 -->
+            <div class="card-regions">
+                
+        <div class="region">
+            <hr class="region-line">
+            <div class="region-title">极简笔记工具</div>
+            <div class="region-content">
+                <div class="content">
+                    <p><strong>卡片组织 · 链接思考 · 智能记忆</strong></p>
+<p>选择 RemUp，开启不一样的学习体验！</p>
+<p><a href="#如何开始使用 remup">→ 快速开始</a> | <a href="QUICK_REFERENCE.md">→ 语法速查</a> | <a href="examples/">→ 示例演示</a></p>
+<p><em>RemUp - 你的第二大脑</em></p>
+<p><em>开始行动吧！未来的你，会感谢现在开始努力的自己！</em></p>
+<p></div></p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+                </div>
+            </section>
+            
+            </main>
+            
+        <section class="vibe-archive">
+            <h2 class="vibe-archive-title">注卡归档</h2>
+            <div class="vibe-archive-cards">
+                
+        <div class="vibe-archive-card">
+            <h3>RemUp</h3>
+            <div class="vibe-archive-content">
+                
+                    <div class="vibe-archive-item">
+                        <a href="#annotation_1" class="vibe-link">RemUp</a>
+                        <p>笔记系统</p>
+                    </div>
+                    
+            </div>
+        </div>
+        
+        <div class="vibe-archive-card">
+            <h3>🎴 卡片系统 - 知识的原子化单元</h3>
+            <div class="vibe-archive-content">
+                
+                    <div class="vibe-archive-item">
+                        <a href="#annotation_2" class="vibe-link">卡片</a>
+                        <p>独立的知识单元</p>
+                    </div>
+                    
+            </div>
+        </div>
+        
+        <div class="vibe-archive-card">
+            <h3>💡 注卡系统 - 交互式批注</h3>
+            <div class="vibe-archive-content">
+                
+                    <div class="vibe-archive-item">
+                        <a href="#annotation_3" class="vibe-link">注卡</a>
+                        <p>悬停显示的解释内容</p>
+                    </div>
+                    
+            </div>
+        </div>
+        
+        <div class="vibe-archive-card">
+            <h3>🔗 标签系统 - 构建知识网络</h3>
+            <div class="vibe-archive-content">
+                
+                    <div class="vibe-archive-item">
+                        <a href="#annotation_4" class="vibe-link">标签</a>
+                        <p>卡片的元数据标记</p>
+                    </div>
+                    
+            </div>
+        </div>
+        
+            </div>
+        </section>
+        
+            <nav class="other-archives">
+                
+            <section class="archives-nav">
+                <h2 class="archive-title">归档导航</h2>
+                
+            <div class="archive-section">
+                <h3 class="archive-title">RemUp - 卡片链接式学习笔记系统</h3>
+                <div class="archive-cards">
+                    <a href="#card-remup" class="archive-card-link">RemUp</a>
+                </div>
+            </div>
+            
+            <div class="archive-section">
+                <h3 class="archive-title">RemUp 是什么？</h3>
+                <div class="archive-cards">
+                    <a href="#card-核心定义" class="archive-card-link">核心定义</a>
+                </div>
+            </div>
+            
+            <div class="archive-section">
+                <h3 class="archive-title">RemUp 的核心特色</h3>
+                <div class="archive-cards">
+                    <a href="#card-卡片系统-知识的原子化单元" class="archive-card-link">🎴 卡片系统 - 知识的原子化单元</a><a href="#card-注卡系统-交互式批注" class="archive-card-link">💡 注卡系统 - 交互式批注</a><a href="#card-标签系统-构建知识网络" class="archive-card-link">🔗 标签系统 - 构建知识网络</a><a href="#card-智能学习-从记录到复习" class="archive-card-link">🧠 智能学习 - 从记录到复习</a>
+                </div>
+            </div>
+            
+            <div class="archive-section">
+                <h3 class="archive-title">RemUp 语法速览</h3>
+                <div class="archive-cards">
+                    <a href="#card-极简语法推荐新手" class="archive-card-link">极简语法推荐新手</a><a href="#card-双语法支持" class="archive-card-link">双语法支持</a><a href="#card-语法对比" class="archive-card-link">语法对比</a>
+                </div>
+            </div>
+            
+            <div class="archive-section">
+                <h3 class="archive-title">主要使用场景</h3>
+                <div class="archive-cards">
+                    <a href="#card-学习型笔记最适用" class="archive-card-link">📖 学习型笔记最适用</a><a href="#card-工作文档很适用" class="archive-card-link">💼 工作文档很适用</a><a href="#card-知识管理非常适合" class="archive-card-link">🗂️ 知识管理非常适合</a><a href="#card-备考复习效果显著" class="archive-card-link">📚 备考复习效果显著</a>
+                </div>
+            </div>
+            
+            <div class="archive-section">
+                <h3 class="archive-title">RemUp 的能力边界</h3>
+                <div class="archive-cards">
+                    <a href="#card-适合的场景" class="archive-card-link">✅ 适合的场景</a><a href="#card-不适合的场景" class="archive-card-link">❌ 不适合的场景</a><a href="#card-需要权衡的场景" class="archive-card-link">⚠️ 需要权衡的场景</a><a href="#card-选择建议" class="archive-card-link">选择建议</a>
+                </div>
+            </div>
+            
+            <div class="archive-section">
+                <h3 class="archive-title">谁适合使用 RemUp？</h3>
+                <div class="archive-cards">
+                    <a href="#card-学生群体强烈推荐" class="archive-card-link">🎓 学生群体强烈推荐</a><a href="#card-职场人士很适合" class="archive-card-link">💻 职场人士很适合</a><a href="#card-终身学习者最适合" class="archive-card-link">🎯 终身学习者最适合</a>
+                </div>
+            </div>
+            
+            <div class="archive-section">
+                <h3 class="archive-title">如何开始使用 RemUp？</h3>
+                <div class="archive-cards">
+                    <a href="#card-第一步了解语法-10-分钟" class="archive-card-link">第一步了解语法 10 分钟</a><a href="#card-第二步创建第一篇笔记-30-分钟" class="archive-card-link">第二步创建第一篇笔记 30 分钟</a><a href="#card-第三步编译查看-5-分钟" class="archive-card-link">第三步编译查看 5 分钟</a><a href="#card-第四步建立习惯持续" class="archive-card-link">第四步建立习惯持续</a><a href="#card-学习路线" class="archive-card-link">学习路线</a><a href="#card-常见问题" class="archive-card-link">常见问题</a>
+                </div>
+            </div>
+            
+            <div class="archive-section">
+                <h3 class="archive-title">开始你的 RemUp 之旅</h3>
+                <div class="archive-cards">
+                    <a href="#card-立即行动" class="archive-card-link">立即行动</a><a href="#card-学习资源" class="archive-card-link">学习资源</a><a href="#card-最后的叮嘱" class="archive-card-link">最后的叮嘱</a><a href="#card-remup-让学习更高效" class="archive-card-link">🚀 RemUp - 让学习更高效</a>
+                </div>
+            </div>
+            
+            </section>
+            
+            </nav>
+        </div>
+        <script>
+        // 只需要处理主题切换和基础跳转功能
+        function changeTheme(themeName) {
+            const stylesheet = document.getElementById('mainStylesheet');
+            if (stylesheet) {
+                stylesheet.href = `static/css/${themeName}.css`;
+                localStorage.setItem('preferredTheme', themeName);
+            }
+        }
+
+        // 平滑滚动功能
+        function setupSmoothScroll() {
+            // 为所有内部链接添加平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'center' 
+                        });
+                    }
+                });
+            });
+        }
+
+        // 响应式布局调整
+        function adjustGridLayout() {
+            const width = window.innerWidth;
+            let layout = '1fr';
+            
+            if (width >= 1200) layout = 'repeat(auto-fit, minmax(500px, 1fr))';
+            else if (width >= 1024) layout = 'repeat(auto-fit, minmax(450px, 1fr))';
+            else if (width >= 768) layout = 'repeat(auto-fit, minmax(400px, 1fr))';
+            
+            document.querySelectorAll('.archive-cards').forEach(container => {
+                container.style.gridTemplateColumns = layout;
+            });
+        }
+
+        // 页面加载初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            // 主题初始化
+            const savedTheme = localStorage.getItem('preferredTheme');
+            const selector = document.getElementById('themeSelector');
+            if (savedTheme && selector) {
+                selector.value = savedTheme;
+                changeTheme(savedTheme);
+            }
+
+            // 设置平滑滚动
+            setupSmoothScroll();
+            
+            // 响应式布局
+            adjustGridLayout();
+            window.addEventListener('resize', adjustGridLayout);
+
+            // 锚点跳转
+            if (window.location.hash) {
+                const target = document.querySelector(window.location.hash);
+                if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 100);
+            }
+        });
+        </script>
+    </body>
+    </html>
