@@ -18,6 +18,48 @@ body{
     text-align: center;
 }
 
+.region {
+    margin-bottom: 2em;
+    position: relative; /* 添加相对定位，让 region-title 绝对定位有参考 */
+}
+
+.region-line {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--region-line) 20%, 
+        var(--region-line) 80%, 
+        transparent 100%);
+    margin: 8px 0 15px 0;
+    position: relative;
+}
+
+/* 没有标题的区域，横线使用实线，方便查看 */
+.region-no-title .region-line {
+    background: var(--region-line);
+    margin: 10px 0 15px 0;
+}
+
+.region-title {
+    position: absolute;
+    top: -8px;
+    left: 0; /* 调整为 0，与正文内容左对齐 */
+    background: var(--card-bg);
+    padding: 0 4px; /* 稍微减少 padding */
+    font-size: 0.8em;
+    font-weight: bold;
+    color: var(--region-title);
+    opacity: 0.8;
+    letter-spacing: 0.5px;
+    z-index: 1; /* 确保标题在线上方 */
+}
+
+.region-content {
+    margin-top: 12px;
+    position: relative;
+}
+
 h1{
     /*背景background*/
     /* background-color: rgb(235, 235, 233); */

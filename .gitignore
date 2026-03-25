@@ -29,3 +29,5 @@ htmlcov/
 .env
 venv/
 env/
+
+remup.egg-info/

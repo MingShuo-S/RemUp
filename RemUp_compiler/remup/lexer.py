@@ -12,11 +12,11 @@ class Lexer:
         'archive': re.compile(r'^\s*--<([^>]+)>--\s*$'),
         'card_start': re.compile(r'^\s*<\+([^/]+)\s*$'),
         'card_end': re.compile(r'^\s*/\+>\s*$'),
-        'region': re.compile(r'^\s*---\s*([^\s].*?)\s*$'),
+        'region': re.compile(r'^\s*---\s*([^\s].*?)?\s*$'),  # 区域名可选
         # 极简语法（Markdown 风格）
         'archive_md': re.compile(r'^\s*#\s+([^#].*?)\s*$'),  # # 归档名
         'card_md': re.compile(r'^\s*##\s+(.+?)\s*$'),  # ## 卡片主题
-        'region_md': re.compile(r'^\s*###\s+(.+?)\s*$'),  # ### 区域名
+        'region_md': re.compile(r'^\s*###\s*(.*?)\s*$'),  # ### 区域名（可选）
         'sub_card_md': re.compile(r'^\s*####\s+(.+?)\s*$'),  # #### 次级卡片（新增）
         
         # 标签和注卡

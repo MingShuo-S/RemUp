@@ -1,9 +1,10 @@
 {
   "name": "RemUp",
-  "displayName": "RemUp Syntax Highlighting",
-  "description": "RemUp 标记语言语法高亮 - 构建'学习 - 理解 - 再学习'的记忆闭环",
-  "version": "1.0.0",
+  "displayName": "RemUp - 标记语言支持",
+  "description": "RemUp 标记语言完整支持 - 语法高亮 + 自动换行 + 智能编辑 | 构建'学习 - 理解 - 再学习'的记忆闭环",
+  "version": "1.1.0",
   "publisher": "MingShuo-S",
+  "main": "./extension.js",
   "engines": {
     "vscode": "^1.108.1"
   },
@@ -24,6 +25,9 @@
     "url": "https://github.com/MingShuo-S/PPL_Project-RemUp.git"
   },
   "icon": "images/icon.png",
+  "activationEvents": [
+    "onLanguage:remup"
+  ],
   "contributes": {
     "languages": [{
       "id": "remup",
@@ -45,6 +49,23 @@
         "language": "remup",
         "path": "./snippets/remup-snippets.json"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "RemUp",
+      "properties": {
+        "remup.enableAutoWrap": {
+          "type": "boolean",
+          "default": true,
+          "description": "为 RemUp 文件启用自动换行（类似 Markdown）",
+          "scope": "resource"
+        },
+        "remup.wordWrapColumn": {
+          "type": "number",
+          "default": 120,
+          "description": "RemUp 文件自动换行列宽",
+          "scope": "resource"
+        }
+      }
+    }
   }
 }

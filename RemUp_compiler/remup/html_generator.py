@@ -454,9 +454,22 @@ class HTMLGenerator:
         '''
     
     def _generate_region(self, region: Region) -> str:
-        """生成区域HTML"""
+        """生成区域 HTML - 支持空区域名"""
         # 处理区域内容行
         content_html = self._process_region_content(region)
+        
+        # 如果区域名为空，只生成横线，不显示标题
+        if not region.name or region.name.strip() == "":
+            return f'''
+            <div class="region region-no-title">
+                <hr class="region-line">
+                <div class="region-content">
+                    <div class="content">
+                        {content_html}
+                    </div>
+                </div>
+            </div>
+            '''
         
         return f'''
         <div class="region">

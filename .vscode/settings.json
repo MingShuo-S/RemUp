@@ -1,0 +1,7 @@
+{
+    "[remup]": {
+        "editor.wordWrap": "on",
+        "editor.wrappingIndentation": "same",
+        "editor.renderWhitespace": "selection"
+    }
+}

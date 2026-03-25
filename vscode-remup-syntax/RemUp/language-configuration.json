@@ -1,16 +1,13 @@
 {
     "comments": {
-        // RemUp uses # for comments (Markdown-style)
         "lineComment": "#"
     },
-    // symbols used as brackets
     "brackets": [
         ["{", "}"],
         ["[", "]"],
         ["(", ")"],
         ["<+", "/+>"]
     ],
-    // symbols that are auto closed when typing
     "autoClosingPairs": [
         ["{", "}"],
         ["[", "]"],
@@ -20,7 +17,6 @@
         {"open": "<+", "close": "/+>", "notIn": ["string"]},
         {"open": "```", "close": "```", "notIn": ["string"]}
     ],
-    // symbols that can be used to surround a selection
     "surroundingPairs": [
         ["{", "}"],
         ["[", "]"],
@@ -30,13 +26,11 @@
         ["*", "*"],
         ["`", "`"]
     ],
-    // folding markers configuration
     "folding": {
         "markers": {
             "start": "^\\s*(#|##|###|####|--<|<\\+)\\s*",
             "end": "^\\s*/\\+>\\s*$"
         }
     },
-    // word pattern for RemUp
     "wordPattern": "(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\-\\=\\+\\[\\]\\{\\}\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)"
 }

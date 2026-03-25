@@ -252,11 +252,15 @@ class Parser:
             print(f"🔍 列表项行内解释: 行{line_index}: {explanation}")
     
     def parse_region(self) -> Optional[Region]:
-        """解析区域定义 - 修复列表项处理"""
+        """解析区域定义 - 修复列表项处理，支持空区域名"""
         if not self.current_token or self.current_token[0] != 'REGION':
             return None
         
         region_name = self.current_token[1]
+        # 如果区域名为空或None，使用默认名称用于生成横线
+        if not region_name or region_name.strip() == "":
+            region_name = ""  # 空名称，HTML 生成器会特殊处理
+        
         self.advance()
         
         region = Region(region_name, "", [])
